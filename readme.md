@@ -50,7 +50,7 @@ Dentre os arquivos e pastas presentes na raiz do projeto, definem-se:
   -   <b>frontRoutes.js</b>: gerenciamento da navegação do usuário.
   -   <b>userRoutes.js</b>: aqui está localizada a rota específica de um usuário, ou um conjunto deles.
 
-  - <b>scripts</b>: aqui estão os arquivos de JavaScript públicos.
+- <b>scripts</b>: aqui estão os arquivos de JavaScript públicos.
   -   <b>init.sql</b>: aqui está o código base em SQL, que apresenta sua regra de negócio.
   -   <b>runSQLScript</b>: aqui existe alguns detalhes de código para funcionamento do banco de dados.
 
