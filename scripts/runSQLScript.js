@@ -13,7 +13,7 @@ const pool = new Pool({
   },
 });
 const runSQLScript = async () => {
-  const filePath = path.join(__dirname, 'init.sql');
+  const filePath = path.join(__dirname, '202505091332_init.sql');
   const sql = fs.readFileSync(filePath, 'utf8');
   try {
     await pool.query(sql);
