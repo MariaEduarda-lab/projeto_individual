@@ -2,7 +2,6 @@ const fs = require('fs');
 const path = require('path');
 const { Pool } = require('pg');
 require('dotenv').config();
-
 const pool = new Pool({
   user: process.env.DB_USER,
   host: process.env.DB_HOST,
@@ -13,11 +12,9 @@ const pool = new Pool({
     rejectUnauthorized: false,
   },
 });
-
 const runSQLScript = async () => {
   const filePath = path.join(__dirname, 'init.sql');
   const sql = fs.readFileSync(filePath, 'utf8');
-
   try {
     await pool.query(sql);
     console.log('Script SQL executado com sucesso!');
@@ -27,5 +24,4 @@ const runSQLScript = async () => {
     await pool.end();
   }
 };
-
 runSQLScript();

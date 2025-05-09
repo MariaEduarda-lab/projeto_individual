@@ -40,29 +40,24 @@ Dentre os arquivos e pastas presentes na raiz do projeto, definem-se:
   -   <b>database.js</b>: Arquivo de configuração para a conexão com o banco de dados.
 
 - <b>controllers</b>: aqui está a lógica de controle das requisições da aplicação.
-  -   <b>userController.js</b>: [Descrição do HomeController, se aplicável].
 
 - <b>documentos</b>: dentro da pasta é possível encontrar a documentaçao detalhada do projeto.
   -   <b>wad.md</b>: aqui é possível ver em seções o processo de criação do projeto e seus detalhes relevantes.
 
 - <b>models</b>: aqui estão as definições dos modelos de dados utilizados na aplicação.
-  -   <b>userModel.js</b>: [Descrição do modelo User, se aplicável].
 
 - <b>routes</b>: aqui estão definidas as rotas da aplicação.
-  -   <b>frontRoutes.js</b>:
-  -   <b>index.js</b>: arquivo principal de definição das rotas.
-  -   <b>userRoutes.js</b>: aqui está localizada a rota do usuário.
+  -   <b>frontRoutes.js</b>: gerenciamento da navegação do usuário.
+  -   <b>userRoutes.js</b>: aqui está localizada a rota específica de um usuário, ou um conjunto deles.
 
   - <b>scripts</b>: aqui estão os arquivos de JavaScript públicos.
   -   <b>init.sql</b>: aqui está o código base em SQL, que apresenta sua regra de negócio.
   -   <b>runSQLScript</b>: aqui existe alguns detalhes de código para funcionamento do banco de dados.
 
 - <b>services</b>: aqui estão os serviços auxiliares da aplicação.
-  -   <b>userService.js</b>: [Descrição do UserService, se aplicável].
-
+  
 - <b>tests</b>: aqui estão os arquivos de testes unitários.
-  -   <b>userModel.test.js</b>: Arquivo de exemplo para testes.
-
+  
 - <b>.gitignore</b>: arquivo que especifica arquivos e diretórios que o Git deve ignorar.
 
 - <b>.env.example</b>: arquivo de exemplo para as variáveis de ambiente.
@@ -75,25 +70,26 @@ Dentre os arquivos e pastas presentes na raiz do projeto, definem-se:
 
 - <b>server.js</b>: arquivo principal que inicializa o servidor da aplicação.
 
-- <b>rest.http</b>: [Descrição do arquivo rest.http, se aplicável, como para testes de API].
+- <b>rest.http</b>: método CRUD para hospedagem e funcionamento.
+- <b>test.http</b>: teste método CRUD para hospedagem e funcionamento.
+
 
 ## 🔧 Como executar o código
 
 1. Clone o repositório:
     ```sh
-    git clone <https://github.com/MariaEduarda-lab/projeto_individual.git>
+    git clone https://github.com/MariaEduarda-lab/projeto_individual.git
     ```
 
 2. Navegue até o diretório do projeto:
     ```sh
-    cd nome-do-projeto
+    cd projeto_individual
     ```
 
-3. [Instruções específicas para executar o seu projeto. Por exemplo:
-    - Se for um projeto Node.js: Execute `npm install` ou `yarn install` para instalar as dependências e depois `npm start` ou `yarn start` para iniciar o servidor.
-    - Se for um projeto web estático: Abra o arquivo `index.html` em um navegador web.]
+3. Instruções específicas para executar o seu projeto. Por exemplo:
+    - Se for um projeto Node.js: Execute ```npm init -y``` ou ```npm install express``` para instalar as dependências e depois ```npm start``` para iniciar o servidor.
 
-Também é possível acessar o projeto diretamente do seu navegador no seguinte link: [Link do seu projeto hospedado, se houver](<https://seuprojeto.com.br/>)
+Também é possível acessar o projeto diretamente do seu navegador no seguinte link: [Link do seu projeto hospedado, se houver, (alterações futuras)](<https://seuprojeto.com.br/>)
 
 ## 🗃 Histórico de lançamentos
 
@@ -114,4 +110,4 @@ Também é possível acessar o projeto diretamente do seu navegador no seguinte 
 
 ## 📋 Licença/License
 
-[Aqui você pode adicionar informações sobre a licença do seu projeto, se houver. Por exemplo, a licença Creative Commons mencionada no seu exemplo anterior, ou uma licença MIT, Apache, etc.]
+LICENSE

@@ -1,7 +1,7 @@
 {
-  "name": "mvc-boilerplate",
+  "name": "projeto_individual",
   "version": "1.0.0",
-  "description": "Boilerplate para estrutura MVC em JavaScript com PostgreSQL e testes",
+  "description": "Projeto de aplicação web: Kombinado",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
@@ -29,7 +29,7 @@
     "url": "git+https://github.com/MariaEduarda-lab/projeto_individual.git"
   },
   "keywords": [],
-  "author": "",
+  "author": "MARIAEDUARDA",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/MariaEduarda-lab/projeto_individual/issues"

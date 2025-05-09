@@ -39,5 +39,5 @@ CREATE TABLE IF NOT EXISTS item_compra (
     preco_estimado_unitario NUMERIC(10,2) NOT NULL,
     subtotal_estimado NUMERIC(10,2) NOT NULL,
     compra_id INT,
-    FOREIGN KEY (id_compra) REFERENCES compra(id)
+    FOREIGN KEY (compra_id) REFERENCES compra(id)
 );
