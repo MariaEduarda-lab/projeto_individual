@@ -18,6 +18,14 @@
 
 ## <a name="c1"></a>1. Introdução (Semana 01)
 
+O projeto Kombinado surge como uma resposta inovadora e prática para otimizar a gestão de pedidos na Barraca da Lu, uma tradicional feira de rua onde a simpatia e a qualidade dos legumes da Lu conquistaram uma clientela fiel. Observando o crescente volume de pedidos realizados através de canais informais, como o WhatsApp pessoal da Lu, e a necessidade de um fluxo de trabalho mais eficiente, a aplicação web Kombinado se propõe a centralizar e simplificar o processo de encomenda tanto para a feirante quanto para seus fregueses.
+
+Em sua essência, o Kombinado visa transformar a maneira como os pedidos são realizados e gerenciados. Para o cliente, a aplicação oferecerá uma interface intuitiva e amigável, ressaltando que seu principal versionamaento é para utilização mobile, havendo versionamento desktop, onde será possível navegar por um catálogo digital dos legumes frescos disponíveis na Barraca da Lu. Cada produto será acompanhado de seu preço atualizado, permitindo ao freguês selecionar as quantidades desejadas e visualizar o valor total de sua compra em tempo real. Além disso, o sistema proporcionará transparência ao informar o status de cada pedido, desde a confirmação até a preparação para entrega ou retirada. Essa ideia surge como um movimento de comodidade, em que o cliente poderá fazer seu pedido com antecedência, considerando suas rotinas agitadas ou seu anseio por praticidade em um mundo automatizado.
+
+Do ponto de vista da Dona Lu, a aplicação Kombinado se apresenta como uma ferramenta poderosa para a organização e o crescimento de seu empreendimento. Através de um painel de controle dedicado, ela poderá gerenciar o catálogo de produtos, incluindo a adição de novos itens, a atualização de preços de forma rápida e eficiente, e o controle do estoque disponível. A visualização centralizada de todos os pedidos recebidos facilitará o planejamento da separação dos produtos e a organização das entregas, otimizando o tempo da barraca. 
+
+O nome "Kombinado" evoca as raízes de sua barraca, já que seu meio de locomoção para o trabalho, para carregar todas as mercadorias e as bancas, é uma Kombi, que possui diversos anos contados na casa, quase o mesmo tempo que Lu trabalha no ramo. Juntou-se o útil ao agradável, onde o veículo icônico e amplamente conhecido pela freguesia traz essa ideia de movimento e também de entregas, que é o objetivo principal do projeto. A aplicação não apenas facilitará as transações comerciais, mas também fortalecerá a presença da Barraca da Lu no universo digital, impulsionando a eficiência e a satisfação de todos os envolvidos, com uma melhor gestão do trabalho.
+
 
 ---
 
