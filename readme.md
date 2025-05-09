@@ -8,7 +8,7 @@
 Kombinado
 
 <p align="center">
-<a href= "[Link do Projeto]"><img src="assets\kombinado.jpeg" alt="[Nome do Projeto]" border="0" width=40% height=40%></a>
+  <img src="assets\kombinado.jpeg" alt="[Texto alternativo]" border="0" width=40% height=40%></a>
 </p>
 
 <br>
