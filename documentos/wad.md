@@ -85,7 +85,7 @@ CREATE TABLE IF NOT EXISTS compra (
     FOREIGN KEY id_fregues REFERENCES fregues(id) -- chave estrangeira, que permite relação com a tabela de origem
 );
 ```
-Para acessar o código completo: [clique aqui](..\scripts\init.sql)
+Para acessar o código completo: [clique aqui](..\scripts\202505091332_init.sql)
 
 
 ### 3.1.1 BD e Models (Semana 5)
