@@ -87,9 +87,17 @@ Dentre os arquivos e pastas presentes na raiz do projeto, definem-se:
     ```
 
 3. Instruções específicas para executar o seu projeto. Por exemplo:
-    - Se for um projeto Node.js: Execute ```npm init -y``` ou ```npm install express``` para instalar as dependências e depois ```npm start``` para iniciar o servidor.
+    - Se for um projeto Node.js: 
+    - Execute:
+    ```sh
+    npm init -y
+    ``` 
+    - Posterioemente, para instalar as dependências e iniciar o servidor: 
+    ```sh
+    npm start
+    ```
 
-Também é possível acessar o projeto diretamente do seu navegador no seguinte link: [Link do seu projeto hospedado, se houver, (alterações futuras)](<https://seuprojeto.com.br/>)
+Também é possível acessar o projeto diretamente do seu navegador no seguinte link: (em breve)
 
 ## 🗃 Histórico de lançamentos
 

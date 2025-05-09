@@ -16,7 +16,7 @@
 
 <br>
 
-## <a name="c1"></a>1. Introdução (Semana 01)
+## <a name="c1"></a>1. Introdução
 
 O projeto Kombinado surge como uma resposta inovadora e prática para otimizar a gestão de pedidos na Barraca da Lu, uma tradicional feira de rua onde a simpatia e a qualidade dos legumes da Lu conquistaram uma clientela fiel. Observando o crescente volume de pedidos realizados através de canais informais, como o WhatsApp pessoal da Lu, e a necessidade de um fluxo de trabalho mais eficiente, a aplicação web Kombinado se propõe a centralizar e simplificar o processo de encomenda tanto para a feirante quanto para seus fregueses.
 
@@ -42,8 +42,9 @@ O nome "Kombinado" evoca as raízes de sua barraca, já que seu meio de locomoç
 ---
 
 ## <a name="c3"></a>3. Projeto da Aplicação Web
+A presente seção detalha as informações técnicas e a perspectiva macro do projeto da aplicação web "Kombinado". Serão apresentados os elementos da arquitetura concebida para o desenvolvimento do sistema, proporcionando uma visão abrangente da sua estrutura e organização.
 
-### 3.1. Modelagem do banco de dados  (Semana 1)
+### 3.1. Modelagem do banco de dados
 
 A modelagem do banco de dados existe para explicar as regras de negócio, ou seja, para expicar as relações que devem existir dentro da modelagem do banco de dados. É possível ter uma perspectiva visual do banco de dados, crinado uma consistência maior para criação do banco em questão, e não apenas isso, mas também ter de maneira organizada o projeto em questão, a partir dos relacionamentos existentes, com alguns atributos e campos-chave.
 
