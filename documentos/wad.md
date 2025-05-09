@@ -2,9 +2,9 @@
 
 **_Os trechos em itálico servem apenas como guia para o preenchimento da seção. Por esse motivo, não devem fazer parte da documentação final._**
 
-## Nome do Projeto
+## Kombinado
 
-#### Autor do projeto
+#### Maria Eduarda Barbosa Oliveira
 
 ## Sumário
 
@@ -18,8 +18,6 @@
 
 ## <a name="c1"></a>1. Introdução (Semana 01)
 
-*Preencha com até 300 palavras – sem necessidade de fonte.*
-*Descreva brevemente o sistema que você irá desenvolver.*
 
 ---
 
@@ -37,11 +35,48 @@
 
 ## <a name="c3"></a>3. Projeto da Aplicação Web
 
-### 3.1. Modelagem do banco de dados  (Semana 3)
+### 3.1. Modelagem do banco de dados  (Semana 1)
 
-*Posicione aqui os diagramas de modelos relacionais do seu banco de dados, apresentando todos os esquemas de tabelas e suas relações. Utilize texto para complementar suas explicações, se necessário.*
+A modelagem do banco de dados existe para explicar as regras de negócio, ou seja, para expicar as relações que devem existir dentro da modelagem do banco de dados. É possível ter uma perspectiva visual do banco de dados, crinado uma consistência maior para criação do banco em questão, e não apenas isso, mas também ter de maneira organizada o projeto em questão, a partir dos relacionamentos existentes, com alguns atributos e campos-chave.
 
-*Posicione também o modelo físico com o Schema do BD (arquivo .sql)*
+<div align="center">
+   <sub>Imagem 1: Diagrama Banco de Dados</sub><br>
+   <img src="..\assets\tabelaRelacional_bancaLu.png" border="0" width=300% height=300% 
+   alt="Título"><br>
+   <sup>Fonte: Maria Eduarda, (Autoral, utilizando dbdiagram.io)</sup>
+ </div>
+
+No diagrama apresentado acima, é possível entender as principais regras de negócio da aplicação web, cujo objetivo é permitir a encomenda de verduras. O freguês realizará o login com seus dados e fará um ou mais pedidos, selecionando os itens desejados e adicionando informações de entrega, como a data do pedido e a data de entrega prevista. A tabela _compra_ armazenará os valores estimados e finais do pedido, além do status de aprovação do dono da banca, que indicará se o pedido foi aprovado, recusado ou entregue. Cada item do pedido terá sua identificação única, nome, quantidade solicitada, preço por quilo e subtotal estimado.
+
+Analisando mais detalhadamente a estrutura das tabelas, observamos as relações estabelecidas por meio de chaves estrangeiras.
+
+Cada tabela possui uma chave primária como elemento principal, responsável por identificar unicamente cada registro. Adicionalmente, algumas tabelas contam com chaves estrangeiras, como é o caso da tabela _compra_, que contém duas chaves desse tipo.
+
+Ao explorarmos as chaves estrangeiras, encontramos o atributo "_id_fregues_" na tabela compra, que estabelece uma ligação com as informações da tabela _fregues_, relacionando cada compra ao cliente específico de forma concisa.
+
+De maneira similar, o atributo "_id_dono_" na tabela _compra_ conecta o pedido ao dono da banca responsável por ele. Essa relação garante que o proprietário tenha acesso aos detalhes do pedido para sua devida gestão.
+
+Por fim, a chave estrangeira "_id_compra_" na tabela _item_compra_ permite que múltiplos itens sejam associados a uma única compra.
+
+Em uma visão macro, é importante notar que um freguês pode realizar diversas compras, um dono de banca pode gerenciar múltiplos fregueses e seus respectivos pedidos, e uma compra pode conter vários itens de compra.
+
+#### Modelo SQL da tabela `compra`
+
+Abaixo, apresentamos um trecho da modelagem em código SQL. O código completo pode ser encontrado em ..\documentos\wad.mdn. O objetivo deste exemplo é ilustrar como o diagrama do banco de dados é traduzido para a linguagem de programação SQL. Os comentários no código visam facilitar a compreensão da função e dos parâmetros de cada elemento da tabela, conforme detalhado anteriormente.
+
+```sql
+-- Criação da tabela compra
+CREATE TABLE IF NOT EXISTS compra (
+    id SERIAL PRIMARY KEY, -- criação de uma chave de identificação
+    data_pedido DATE NOT NULL,
+    data_entrega DATE NOT NULL,
+    id_fregues INT REFERENCES fregues(id), -- chave estrangeira, que permite relação com a tabela de origem
+    id_dono INT REFERENCES dono_banca(id),
+    valor_estimdo_total NUMERIC(10,2) NOT NULL, -- definição de inserção numérica som 10 dígitos máximos e 2 casas decimais (dinheiro)
+    valor_final_total NUMERIC(10,2) NOT NULL,
+    aprovado_por_dono VARCHAR(20) NOT NULL
+);
+```
 
 ### 3.1.1 BD e Models (Semana 5)
 *Descreva aqui os Models implementados no sistema web*
@@ -96,7 +131,9 @@
 
 ## <a name="c5"></a>5. Referências
 
-_Incluir as principais referências de seu projeto, para que o leitor possa consultar caso ele se interessar em aprofundar._<br>
+Amazon Web Services, Inc. O que é modelagem de dados? Amazon Web Services, Inc., s.d. Disponível em: &lt;https://aws.amazon.com/pt/what-is/data-modeling/#:~:text=A%20modelagem%20de%20dados%20traz,sistema%20em%20toda%20a%20organiza%C3%A7%C3%A3o>. Acesso em: 08 de maio de 2025.
+
+<br>
 
 ---
 ---
