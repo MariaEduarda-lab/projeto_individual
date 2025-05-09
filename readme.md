@@ -76,26 +76,35 @@ Dentre os arquivos e pastas presentes na raiz do projeto, definem-se:
 
 ## 🔧 Como executar o código
 
+Aqui encontram-se todas as instruções necessárias para a instalação de todos os programas, bibliotecas e ferramentas imprescindíveis para a configuração do ambiente de desenvolvimento.
 1. Clone o repositório:
     ```sh
-    git clone https://github.com/MariaEduarda-lab/projeto_individual.git
+    git clone <URL_DO_REPOSITORIO>
     ```
-
 2. Navegue até o diretório do projeto:
     ```sh
-    cd projeto_individual
+    cd nome-do-projeto
     ```
-
-3. Instruções específicas para executar o seu projeto. Por exemplo:
-    - Se for um projeto Node.js: 
-    - Execute:
-    ```sh
-    npm init -y
-    ``` 
-    - Posterioemente, para instalar as dependências e iniciar o servidor: 
-    ```sh
-    npm start
-    ```
+3. No "terminal", digite este comando para instalar as dependências definidas no arquivo <b>package.json</b> que são necessárias para rodar o projeto.
+```sh
+npm install
+```
+4. Para inicializar o servidor, digite o seguinte comando:
+```sh
+node server.js
+```
+Ou
+```sh
+npm run start
+```
+5. Para realizar a migração, digite o seguinte comando:
+```sh
+node scripts/runSQLScript.js
+```
+Ou
+```sh
+npm run migrations
+```
 
 Também é possível acessar o projeto diretamente do seu navegador no seguinte link: (em breve)
 
