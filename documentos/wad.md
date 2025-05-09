@@ -58,13 +58,13 @@ No diagrama apresentado acima, é possível entender as principais regras de neg
 
 Analisando mais detalhadamente a estrutura das tabelas, observamos as relações estabelecidas por meio de chaves estrangeiras.
 
-Cada tabela possui uma chave primária como elemento principal, responsável por identificar unicamente cada registro. Adicionalmente, algumas tabelas contam com chaves estrangeiras, como é o caso da tabela _compra_, que contém duas chaves desse tipo.
+Cada tabela possui uma chave primária como elemento principal, responsável por identificar unicamente cada registro. Adicionalmente, algumas tabelas contam com chaves estrangeiras, como é o caso da tabela _compra_, _fregues_ e _item_compra.
 
-Ao explorarmos as chaves estrangeiras, encontramos o atributo "_id_fregues_" na tabela compra, que estabelece uma ligação com as informações da tabela _fregues_, relacionando cada compra ao cliente específico de forma concisa.
+Ao explorarmos as chaves estrangeiras, encontramos o atributo "_dono_banca_id_" na tabela _fregues_ conecta os fregueses ao dono da banca responsável por eles. Essa relação garante que o proprietário tenha acesso aos detalhes do cliente e consequentemente do pedido para sua devida gestão.
 
-De maneira similar, o atributo "_id_dono_" na tabela _compra_ conecta o pedido ao dono da banca responsável por ele. Essa relação garante que o proprietário tenha acesso aos detalhes do pedido para sua devida gestão.
+De maneira similar, há o atributo "_fregues_id_" na tabela _compra_, que estabelece uma ligação com as informações da tabela _fregues_, relacionando cada compra ao cliente específico de forma concisa.
 
-Por fim, a chave estrangeira "_id_compra_" na tabela _item_compra_ permite que múltiplos itens sejam associados a uma única compra.
+Por fim, a chave estrangeira "_compra_id_" na tabela _item_compra_ permite que múltiplos itens sejam associados a uma única compra.
 
 Em uma visão macro, é importante notar que um freguês pode realizar diversas compras, um dono de banca pode gerenciar múltiplos fregueses e seus respectivos pedidos, e uma compra pode conter vários itens de compra.
 
@@ -78,13 +78,15 @@ CREATE TABLE IF NOT EXISTS compra (
     id SERIAL PRIMARY KEY, -- criação de uma chave de identificação
     data_pedido DATE NOT NULL,
     data_entrega DATE NOT NULL,
-    id_fregues INT REFERENCES fregues(id), -- chave estrangeira, que permite relação com a tabela de origem
-    id_dono INT REFERENCES dono_banca(id),
     valor_estimdo_total NUMERIC(10,2) NOT NULL, -- definição de inserção numérica som 10 dígitos máximos e 2 casas decimais (dinheiro)
     valor_final_total NUMERIC(10,2) NOT NULL,
-    aprovado_por_dono VARCHAR(20) NOT NULL
+    aprovado_por_dono VARCHAR (20) NOT NULL,
+    fregues_id INT,
+    FOREIGN KEY id_fregues REFERENCES fregues(id) -- chave estrangeira, que permite relação com a tabela de origem
 );
 ```
+Para acessar o código completo: [clique aqui](..\scripts\init.sql)
+
 
 ### 3.1.1 BD e Models (Semana 5)
 *Descreva aqui os Models implementados no sistema web*
