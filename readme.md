@@ -110,4 +110,4 @@ Também é possível acessar o projeto diretamente do seu navegador no seguinte 
 
 ## 📋 Licença/License
 
-LICENSE
+Para acessar a licença: [clique aqui](LICENSE)
