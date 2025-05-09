@@ -79,11 +79,11 @@ Dentre os arquivos e pastas presentes na raiz do projeto, definem-se:
 Aqui encontram-se todas as instruções necessárias para a instalação de todos os programas, bibliotecas e ferramentas imprescindíveis para a configuração do ambiente de desenvolvimento.
 1. Clone o repositório:
     ```sh
-    git clone <URL_DO_REPOSITORIO>
+    git clone https://github.com/MariaEduarda-lab/projeto_individual.git
     ```
 2. Navegue até o diretório do projeto:
     ```sh
-    cd nome-do-projeto
+    cd projeto_individual
     ```
 3. No "terminal", digite este comando para instalar as dependências definidas no arquivo <b>package.json</b> que são necessárias para rodar o projeto.
 ```sh
