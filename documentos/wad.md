@@ -48,12 +48,61 @@ A presente seção detalha as informações técnicas e a perspectiva macro do p
 
 A modelagem do banco de dados existe para explicar as regras de negócio, ou seja, para expicar as relações que devem existir dentro da modelagem do banco de dados. É possível ter uma perspectiva visual do banco de dados, crinado uma consistência maior para criação do banco em questão, e não apenas isso, mas também ter de maneira organizada o projeto em questão, a partir dos relacionamentos existentes, com alguns atributos e campos-chave.
 
-<div align="center">
-   <sub>Imagem 1: Diagrama Banco de Dados</sub><br>
-   <img src="..\assets\tabelaRelacional_bancaLu.png" border="0" width=300% height=300% 
-   alt="Título"><br>
-   <sup>Fonte: Maria Eduarda, (Autoral, utilizando dbdiagram.io)</sup>
- </div>
+```mermaid
+---
+config:
+  theme: neo-dark
+---
+
+erDiagram
+    dono_banca {
+        id SERIAL PK
+        nome VARCHAR(100)
+        email VARCHAR(100)
+        senha VARCHAR(100)
+        telefone VARCHAR(20)
+    }
+
+    fregues {
+        id SERIAL PK
+        nome VARCHAR
+        email VARCHAR
+        senha VARCHAR
+        endereco VARCHAR
+        telefone VARCHAR
+        dono_banca_id INT FK
+    }
+
+    compra {
+        id SERIAL PK
+        data_pedido DATE
+        data_entrega DATE
+        valor_estimdo_total NUMERIC
+        valor_final_total NUMERIC
+        aprovado_por_dono VARCHAR
+        fregues_id INT FK
+        dono_banca_id INT FK
+    }
+
+    item_compra {
+        id SERIAL PK
+        nome_produto VARCHAR
+        quantidade NUMERIC
+        preco_estimado_unitario NUMERIC
+        subtotal_estimado NUMERIC
+        compra_id INT FK
+        fregues_id INT FK
+        dono_banca_id INT FK
+    }
+
+    dono_banca ||--o{ fregues : "1-N"
+    dono_banca ||--o{ compra : "1-N"
+    fregues ||--o{ compra : "1-N"
+    compra ||--o{ item_compra : "1-N"
+    fregues ||--o{ item_compra : "1-N"
+    dono_banca ||--o{ item_compra : "1-N"
+
+```
 
 No diagrama apresentado acima, é possível entender as principais regras de negócio da aplicação web, cujo objetivo é permitir a encomenda de verduras. O freguês realizará o login com seus dados e fará um ou mais pedidos, selecionando os itens desejados e adicionando informações de entrega, como a data do pedido e a data de entrega prevista. A tabela _compra_ armazenará os valores estimados e finais do pedido, além do status de aprovação do dono da banca, que indicará se o pedido foi aprovado, recusado ou entregue. Cada item do pedido terá sua identificação única, nome, quantidade solicitada, preço por quilo e subtotal estimado.
 
