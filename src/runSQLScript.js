@@ -15,26 +15,30 @@ const pool = new Pool({
 });
 
 const runSQLScript = async () => {
-  const scriptFiles = [
-    '202505091332_init.sql',
-    '202505211510_init.sql',
-    '202505211511_init.sql',
-    '202505211512_init.sql', 
-  ];
-
   try {
-    for (const file of scriptFiles) {
-      const filePath = path.join(__dirname, file);
+
+    const scriptsDir = path.join(__dirname, 'scripts'); 
+    
+    const files = fs.readdirSync(scriptsDir);
+
+    const sqlFiles = files
+      .filter(file => file.endsWith('.sql'))
+      .sort();
+
+    for (const file of sqlFiles) {
+      const filePath = path.join(scriptsDir, file);
       const sql = fs.readFileSync(filePath, 'utf8');
-      console.log(`Executando ${file}...`);
+      
+      console.log(`Executando: ${file}...`);
       await pool.query(sql);
+      console.log(`✅ Sucesso: ${file}`);
     }
 
-    console.log('Todos os scripts SQL foram executados com sucesso!');
+    console.log('🎉 Todos os scripts foram executados!');
   } catch (err) {
-    console.error('Erro ao executar o script SQL:', err);
+    console.error('❌ Erro:', err.message);
   } finally {
-    await pool.end();
+    await pool.end(); 
   }
 };
 
