@@ -16,8 +16,8 @@ db.connect()
     const donoBancaRoute = require('./routes/donoBancaRoute');
     app.use('/dono', donoBancaRoute);
 
-    //const frontendRoutes = require('./routes/frontRoutes');
-    //app.use('/', frontendRoutes);
+    const freguesRoute = require('./routes/freguesRoute');
+    app.use('/fregues', freguesRoute);
 
     // Middleware para lidar com erros de rota não encontrada
     app.use((req, res, next) => {
