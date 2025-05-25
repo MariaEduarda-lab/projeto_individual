@@ -19,6 +19,9 @@ db.connect()
     const freguesRoute = require('./routes/freguesRoute');
     app.use('/fregues', freguesRoute);
 
+    const compraRoute = require('./routes/compraRoute');
+    app.use('/compra', compraRoute);
+
     // Middleware para lidar com erros de rota não encontrada
     app.use((req, res, next) => {
       res.status(404).send('Página não encontrada');
