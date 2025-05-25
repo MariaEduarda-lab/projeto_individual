@@ -103,8 +103,17 @@ node scripts/runSQLScript.js
 ```
 Ou
 ```sh
-npm run migrations
+npm run migration
 ```
+6. Para realizar os testes de endpoints (pré requisitos: migrações feitas e seridor inicializado)
+ **Configure o Postman**:
+   ```sh
+   - Método: GET/POST/PUT/DELETE
+   - URL: http://localhost:3001/[endpoint] (ex: /fregueses)
+   - Body (para POST/PUT): JSON com os dados
+   ```
+  Para mais detalhes sobre os endpoins, [clique aqui](./documentos/wad.md#36-webapi-e-endpoints)
+  
 
 Também é possível acessar o projeto diretamente do seu navegador no seguinte link: (em breve)
 
@@ -116,9 +125,14 @@ Também é possível acessar o projeto diretamente do seu navegador no seguinte 
     * 
 * 0.3.0 - XX/XX/2024
     * 
-* 0.2.0 - XX/XX/2024
+* 0.2.0 - 25/05/2024 : Entrega parte 2
+    - Criação de padrão mvc
+      - Pasta Models e seus diretórios
+      - Pasta Controller e seus diretórios
+      - Pasta Routes e seus diretórios
+    - Descrição de Endpoints
     * 
-* 0.1.0 - 09/05/2005 : : Entrega parte 1
+* 0.1.0 - 09/05/2005 : Entrega parte 1
     - Introdução
     - Diagrama Banco de Dados
     - Descrição do sistema escolhido
