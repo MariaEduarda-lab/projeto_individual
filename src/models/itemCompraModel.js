@@ -33,4 +33,4 @@ class ItemCompra {
   }
 }
 
-module.exports = Compra;
+module.exports = ItemCompra;
