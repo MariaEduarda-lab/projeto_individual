@@ -1,5 +1,3 @@
-// controllers/userController.js
-
 const donoBancaModel = require('../models/donoBancaModel.js');
 
 const getAllDonos = async (req, res) => {

@@ -1,5 +1,3 @@
-// controllers/userController.js
-
 const freguesModel = require('../models/freguesModel.js');
 
 const getAllFregueses = async (req, res) => {

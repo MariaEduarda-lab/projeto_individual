@@ -1,5 +1,3 @@
-// controllers/userController.js
-
 const itemCompraController = require('../models/itemCompraModel.js');
 
 const getAllitensCompra = async (req, res) => {

@@ -1,5 +1,3 @@
-// controllers/userController.js
-
 const compraModel = require('../models/compraModel.js');
 
 const getAllCompras = async (req, res) => {

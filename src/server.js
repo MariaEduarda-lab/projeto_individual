@@ -25,12 +25,10 @@ db.connect()
     const itemCompraRoute = require('./routes/itemCompraRoute');
     app.use('/item', itemCompraRoute);
 
-    // Middleware para lidar com erros de rota não encontrada
     app.use((req, res, next) => {
       res.status(404).send('Página não encontrada');
     });
 
-    // Middleware para lidar com erros internos do servidor
     app.use((err, req, res, next) => {
       console.error(err.stack);
       res.status(500).send('Erro no servidor');
@@ -41,13 +39,14 @@ db.connect()
       console.log(`Servidor rodando na porta ${PORT}`);
     });
   })
+  
   .catch(err => {
     console.error('Erro ao conectar ao banco de dados:', err);
   });
 
-  //Semana 5
+
 const bodyParser = require('body-parser');
 const cors = require('cors');
-// Middlewares
+
 app.use(cors());
 app.use(bodyParser.json());
