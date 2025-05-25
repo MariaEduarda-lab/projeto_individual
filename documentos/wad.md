@@ -167,7 +167,57 @@ Para acessar o código completo: [clique aqui](../scripts/202505091332_init.sql)
 
 ### 3.6. WebAPI e endpoints (Semana 05)
 
-*Utilize um link para outra página de documentação contendo a descrição completa de cada endpoint. Ou descreva aqui cada endpoint criado para seu sistema.*  
+Endpoints são URLs específicas que permitem a comunicação com uma API. Cada endpoint:
+
+- Representa uma operação do sistema (criar, ler, atualizar ou deletar dados)  
+- Combina um **método HTTP** (GET, POST, PUT, DELETE) com um **caminho** (ex: `/fregueses`)  
+- Segue o padrão REST para integração entre aplicações
+
+Abaixo estão detalhados todos os endpoints disponíveis na API, organizados por funcionalidade.
+
+#### Endpoints da API
+
+##### Donos de Banca
+- **GET** `/donos` - Lista todos os donos de banca
+- **GET** `/donos/:id` - Obtém um dono de banca específico pelo ID
+- **POST** `/donos` - Cria um novo dono de banca
+- **PUT** `/donos/:id` - Atualiza um dono de banca existente
+- **DELETE** `/donos/:id` - Remove um dono de banca
+
+##### Fregueses
+- **GET** `/fregueses` - Lista todos os fregueses
+- **GET** `/fregueses/:id` - Obtém um freguês específico pelo ID
+- **POST** `/fregueses` - Cria um novo freguês
+- **PUT** `/fregueses/:id` - Atualiza um freguês existente
+- **DELETE** `/fregueses/:id` - Remove um freguês
+
+##### Compras
+- **GET** `/compras` - Lista todas as compras
+- **GET** `/compras/:id` - Obtém uma compra específica pelo ID
+- **POST** `/compras` - Cria uma nova compra
+- **PUT** `/compras/:id` - Atualiza uma compra existente
+- **DELETE** `/compras/:id` - Remove uma compra
+
+##### Itens de Compra
+- **GET** `/itens-compra` - Lista todos os itens de compra
+- **GET** `/itens-compra/:id` - Obtém um item de compra específico pelo ID
+- **POST** `/itens-compra` - Cria um novo item de compra
+- **PUT** `/itens-compra/:id` - Atualiza um item de compra existente
+- **DELETE** `/itens-compra/:id` - Remove um item de compra
+
+#### Exemplos de Requisições
+
+##### Criar um Freguês (POST)
+```json
+{
+  "nome": "Afonsinho",
+  "email": "Afonsinho@exemplo.com",
+  "senha": "senha123",
+  "endereco": "Inteli, 123",
+  "telefone": "11999999999",
+  "dono_banca_id": 3
+}
+``` 
 
 ### 3.7 Interface e Navegação (Semana 07)
 
