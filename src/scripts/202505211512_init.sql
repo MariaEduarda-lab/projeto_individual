@@ -1,13 +1,12 @@
-CREATE TABLE IF NOT EXISTS item_compra (
+CREATE TABLE IF NOT EXISTS compra (
     id SERIAL PRIMARY KEY,
-    nome_produto VARCHAR(100) NOT NULL,
-    quantidade NUMERIC NOT NULL,
-    preco_estimado_unitario NUMERIC(10,2) NOT NULL,
-    subtotal_estimado NUMERIC(10,2) NOT NULL,
-    compra_id INT,
-    fregues_id INT,
-    dono_banca_id INT,
-    FOREIGN KEY (compra_id) REFERENCES compra(id),
+    data_pedido DATE NOT NULL,
+    data_entrega DATE NOT NULL,
+    valor_estimado_total NUMERIC(10,2) NOT NULL, 
+    valor_final_total NUMERIC(10,2), 
+    status BOOLEAN NOT NULL, 
+    fregues_id INT NOT NULL,
+    dono_banca_id INT NOT NULL,
     FOREIGN KEY (fregues_id) REFERENCES fregues(id),
     FOREIGN KEY (dono_banca_id) REFERENCES dono_banca(id)
 );
