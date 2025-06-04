@@ -1,11 +1,11 @@
 const express = require('express');
 const router = express.Router();
-const compraController = require('../controllers/compraController');
+const CompraController = require('../controllers/compraController');
 
-router.get('/', compraController.getAllCompras);
-router.get('/:id', compraController.getCompraById);
-router.post('/', compraController.createCompra);
-router.put('/:id', compraController.updateCompra);
-router.delete('/:id', compraController.deleteCompra);
+router.get('/', CompraController.index);
+router.get('/:id', CompraController.show);
+router.post('/', CompraController.store);
+router.put('/:id', CompraController.update);
+router.delete('/:id', CompraController.delete);
 
 module.exports = router;

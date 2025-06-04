@@ -1,11 +1,11 @@
 const express = require('express');
 const router = express.Router();
-const freguesController = require('../controllers/freguesController');
+const FreguesController = require('../controllers/freguesController');
 
-router.get('/', freguesController.getAllFregueses);
-router.get('/:id', freguesController.getFreguesById);
-router.post('/', freguesController.createFregues);
-router.put('/:id', freguesController.updateFregues);
-router.delete('/:id', freguesController.deleteFregues);
+router.get('/', FreguesController.index);
+router.get('/:id', FreguesController.show);
+router.post('/', FreguesController.store);
+router.put('/:id', FreguesController.update);
+router.delete('/:id', FreguesController.delete);
 
 module.exports = router;
