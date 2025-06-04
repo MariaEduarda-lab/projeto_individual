@@ -1,68 +1,32 @@
-const freguesModel = require('../models/freguesModel.js');
-
-const getAllFregueses = async (req, res) => {
-  try {
-    const fregueses = await freguesModel.getAll();
-    res.status(200).json(fregueses);
-  } catch (error) {
-    res.status(500).json({ error: error.message });
-  }
-};
-
-const getFreguesById = async (req, res) => {
-  try {
-    const fregues = await freguesModel.getById(req.params.id);
-    if (fregues) {
-      res.status(200).json(fregues);
-    } else {
-      res.status(404).json({ error: 'Usuário não encontrado' });
-    }
-  } catch (error) {
-    res.status(500).json({ error: error.message });
-  }
-};
-
-const createFregues = async (req, res) => {
-  try {
-    const data = req.body;
-    const newFregues = await freguesModel.create(data);
-    res.status(201).json(newFregues);
-  } catch (error) {
-    res.status(500).json({ error: error.message });
-  }
-};
-
-const updateFregues = async (req, res) => {
-  try {
-    const data = req.body;
-    const updatedFregues = await freguesModel.update(req.params.id, data);
-    if (updatedFregues) {
-      res.status(200).json(updatedFregues);
-    } else {
-      res.status(404).json({ error: 'Usuário não encontrado' });
-    }
-  } catch (error) {
-    res.status(500).json({ error: error.message });
-  }
-};
-
-const deleteFregues = async (req, res) => {
-  try {
-    const deletedFregues = await freguesModel.delete(req.params.id);
-    if (deletedFregues) {
-      res.status(200).json(deletedFregues);
-    } else {
-      res.status(404).json({ error: 'Usuário não encontrado' });
-    }
-  } catch (error) {
-    res.status(500).json({ error: error.message });
-  }
-};
+const FreguesService = require('../services/freguesRepository');
 
 module.exports = {
-  getAllFregueses,
-  getFreguesById,
-  createFregues,
-  updateFregues,
-  deleteFregues
+  async index(req, res) {
+    const fregues = await FreguesService.getAll();
+    res.json(fregues);
+  },
+
+  async show(req, res) {
+    const { id } = req.params;
+    const fregues = await FreguesService.getById(id);
+    if (!fregues) return res.status(404).json({ error: 'Fregues não encontrada' });
+    res.json(fregues);
+  },
+
+  async store(req, res) {
+    const nova = await FreguesService.create(req.body);
+    res.status(201).json(nova);
+  },
+
+  async update(req, res) {
+    const { id } = req.params;
+    const atualizada = await FreguesService.update(id, req.body);
+    res.json(atualizada);
+  },
+
+  async delete(req, res) {
+    const { id } = req.params;
+    await FreguesService.delete(id);
+    res.status(204).send();
+  }
 };
