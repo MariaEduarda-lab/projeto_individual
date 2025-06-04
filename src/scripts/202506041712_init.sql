@@ -1,8 +1,7 @@
 CREATE TABLE IF NOT EXISTS item_compra (
     id SERIAL PRIMARY KEY,
-    quantidade NUMERIC NOT NULL, 
-    subtotal_estimado NUMERIC(10,2) NOT NULL, 
-    valor_final_unitario NUMERIC(10,2), 
+    quantidade NUMERIC NOT NULL,
+    subtotal_estimado NUMERIC(10,2), 
     subtotal_final NUMERIC(10,2),
     mercadoria_id INT NOT NULL,
     compra_id INT NOT NULL,
