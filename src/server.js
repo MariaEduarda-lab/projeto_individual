@@ -13,6 +13,9 @@ db.connect()
 
     app.use(express.json());
 
+    const homeRoute = require('./routes/homeRoute');
+    app.use('/', homeRoute);
+
     const donoBancaRoute = require('./routes/donoBancaRoute');
     app.use('/dono', donoBancaRoute);
 

@@ -8,13 +8,14 @@
     "dev": "nodemon server.js",
     "test": "jest",
     "test:coverage": "jest --coverage",
-    "migration": "node ./runSQLScript.js"
+    "migration": "node ./scripts/runSQLScript.js"
   },
   "dependencies": {
     "cors": "^2.8.5",
     "dotenv": "^10.0.0",
     "ejs": "^3.1.10",
     "express": "^4.21.2",
+    "joi": "^17.13.3",
     "pg": "^8.7.1"
   },
   "devDependencies": {
