@@ -1,4 +1,4 @@
-node_modules/
+node_modules
 .env
-coverage/
+coverage
 package-lock.json
