@@ -16,10 +16,6 @@ class DonoBancaService {
   update(id, dono_banca) {
     return DonoBancaRepository.update(id, dono_banca);
   }
-
-  delete(id) {
-    return DonoBancaRepository.delete(id);
-  }
 }
 
 module.exports = new DonoBancaService();
