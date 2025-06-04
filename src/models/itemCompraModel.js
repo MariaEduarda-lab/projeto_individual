@@ -1,14 +1,17 @@
-class ItemCompra {
-  constructor({ id = null, nome_produto, quantidade, preco_estimado_unitario, subtotal_estimado, compra_id, fregues_id, dono_banca_id }) {
-    this.id = id;
-    this.nome_produto = nome_produto;
-    this.quantidade = quantidade;
-    this.preco_estimado_unitario = preco_estimado_unitario;
-    this.subtotal_estimado = subtotal_estimado;
-    this.compra_id = compra_id;
-    this.fregues_id = fregues_id;
-    this.dono_banca_id = dono_banca_id;
-  }
+const Joi = require('joi');
+
+class ItemCompraModel {
+    static get schema() {
+        return Joi.object({
+            nome_produto: Joi.string().max(100).required(),
+            quantidade: Joi.number().positive().required(),
+            preco_estimado_unitario: Joi.number().precision(2).min(0).required(),
+            subtotal_estimado: Joi.number().precision(2).min(0).required(),
+            compra_id: Joi.number().integer().optional(),
+            fregues_id: Joi.number().integer().optional(),
+            dono_banca_id: Joi.number().integer().optional()
+        });
+    }
 }
 
-module.exports = ItemCompra;
+module.exports = ItemCompraModel;

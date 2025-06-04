@@ -1,14 +1,17 @@
-class Compra {
-  constructor({ id = null, data_pedido, data_entrega, valor_estimado_total, valor_final_total, aprovado_por_dono, fregues_id, dono_banca_id }) {
-    this.id = id;
-    this.data_pedido = data_pedido;
-    this.data_entrega = data_entrega;
-    this.valor_estimado_total = valor_estimado_total;
-    this.valor_final_total = valor_final_total;
-    this.aprovado_por_dono = aprovado_por_dono;
-    this.fregues_id = fregues_id;
-    this.dono_banca_id = dono_banca_id;
-  }
+const Joi = require('joi');
+
+class CompraModel {
+    static get schema() {
+        return Joi.object({
+            data_pedido: Joi.date().required(),
+            data_entrega: Joi.date().required(),
+            valor_estimado_total: Joi.number().precision(2).min(0).required(),
+            valor_final_total: Joi.number().precision(2).min(0).required(),
+            aprovado_por_dono: Joi.string().max(20).required(),
+            fregues_id: Joi.number().integer().optional(),
+            dono_banca_id: Joi.number().integer().optional()
+        });
+    }
 }
 
-module.exports = Compra;
+module.exports = CompraModel;
