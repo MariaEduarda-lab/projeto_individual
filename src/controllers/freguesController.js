@@ -1,4 +1,4 @@
-const FreguesService = require('../services/freguesRepository');
+const FreguesService = require('../services/freguesService');
 
 module.exports = {
   async index(req, res) {

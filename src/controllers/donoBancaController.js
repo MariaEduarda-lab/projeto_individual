@@ -1,4 +1,4 @@
-const DonoBancaService = require('../services/donoBancaRepository');
+const DonoBancaService = require('../services/donoBancaService');
 
 module.exports = {
   async index(req, res) {

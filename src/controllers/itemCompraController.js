@@ -1,4 +1,4 @@
-const ItemCompraService = require('../services/itemCompraRepository');
+const ItemCompraService = require('../services/itemCompraService');
 
 module.exports = {
   async index(req, res) {
