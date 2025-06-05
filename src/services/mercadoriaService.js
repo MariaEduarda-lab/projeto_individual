@@ -1,25 +1,32 @@
 const MercadoriaRepository = require('../repositories/mercadoriaRepository');
+const MercadoriaModel = require('../models/mercadoriaModel');
 
 class MercadoriaService {
-  getAll() {
-    return MercadoriaRepository.findAll();
+  async getAll() {
+    return await MercadoriaRepository.findAll();
   }
 
-  getById(id) {
-    return MercadoriaRepository.findById(id);
+  async getById(id) {
+    return await MercadoriaRepository.findById(id);
   }
 
-  create(dono_banca) {
-    return MercadoriaRepository.create(dono_banca);
+  async create(mercadoria) {
+    const { error } = MercadoriaModel.schema.validate(mercadoria);
+    if (error) throw new Error(error.details[0].message);
+
+    return await MercadoriaRepository.create(mercadoria);
   }
 
-  update(id, dono_banca) {
-    return MercadoriaRepository.update(id, dono_banca);
+  async update(id, mercadoria) {
+    const { error } = MercadoriaModel.schema.validate(mercadoria);
+    if (error) throw new Error(error.details[0].message);
+
+    return await MercadoriaRepository.update(id, mercadoria);
   }
 
-   delete(id) {
-      return MercadoriaRepository.delete(id);
-    }
+  async delete(id) {
+    return await MercadoriaRepository.delete(id);
+  }
 }
 
 module.exports = new MercadoriaService();

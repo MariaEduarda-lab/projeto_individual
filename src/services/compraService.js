@@ -1,25 +1,32 @@
 const CompraRepository = require('../repositories/compraRepository');
+const CompraModel = require('../models/compraModel');
 
 class CompraService {
-  getAll() {
-    return CompraRepository.findAll();
-  }
+    async getAll() {
+        return await CompraRepository.findAll();
+    }
 
-  getById(id) {
-    return CompraRepository.findById(id);
-  }
+    async getById(id) {
+        return await CompraRepository.findById(id);
+    }
 
-  create(compra) {
-    return CompraRepository.create(compra);
-  }
+    async create(compra) {  
+        const { error } = CompraModel.schema.validate(compra);
+        if (error) throw new Error(error.details[0].message);
 
-  update(id, compra) {
-    return CompraRepository.update(id, compra);
-  }
+        return await CompraRepository.create(compra);
+    }
 
-  delete(id) {
-    return CompraRepository.delete(id);
-  }
+    async update(id, compra) {  
+        const { error } = CompraModel.schema.validate(compra);
+        if (error) throw new Error(error.details[0].message);
+
+        return await CompraRepository.update(id, compra);
+    }
+
+    async delete(id) {
+        return await CompraRepository.delete(id);
+    }
 }
 
 module.exports = new CompraService();

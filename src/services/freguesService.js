@@ -1,25 +1,32 @@
 const FreguesRepository = require('../repositories/freguesRepository');
+const FreguesModel = require('../models/freguesModel'); 
 
 class FreguesService {
-  getAll() {
-    return FreguesRepository.findAll();
-  }
+    async getAll() {
+        return await FreguesRepository.findAll();
+    }
 
-  getById(id) {
-    return FreguesRepository.findById(id);
-  }
+    async getById(id) {
+        return await FreguesRepository.findById(id);
+    }
 
-  create(fregues) {
-    return FreguesRepository.create(fregues);
-  }
+    async create(fregues) {  
+        const { error } = FreguesModel.schema.validate(fregues);
+        if (error) throw new Error(error.details[0].message);
 
-  update(id, fregues) {
-    return FreguesRepository.update(id, fregues);
-  }
+        return await FreguesRepository.create(fregues);
+    }
 
-  delete(id) {
-    return FreguesRepository.delete(id);
-  }
+    async update(id, fregues) {  
+        const { error } = FreguesModel.schema.validate(fregues);
+        if (error) throw new Error(error.details[0].message);
+
+        return await FreguesRepository.update(id, fregues);
+    }
+
+    async delete(id) {
+        return await FreguesRepository.delete(id);
+    }
 }
 
 module.exports = new FreguesService();
