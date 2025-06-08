@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Cadastro do Dono da Banca</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: #eafbe6;
+            color: #234d20;
+        }
+        .header-tent {
+            width: 100%;
+            height: 100px;
+            background: repeating-linear-gradient(
+                90deg,
+                #e53935 0 40px,
+                #fff 40px 80px
+            );
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            position: relative;
+        }
+        .tent-edge {
+            width: 100%;
+            height: 20px;
+            background: repeating-linear-gradient(
+                90deg,
+                #e53935 0 20px,
+                #fff 20px 40px
+            );
+            border-bottom-left-radius: 30px 15px;
+            border-bottom-right-radius: 30px 15px;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+        }
+        .container {
+            max-width: 400px;
+            margin: 40px auto;
+            background: #fff;
+            border-radius: 16px;
+            box-shadow: 0 4px 16px rgba(60, 120, 60, 0.10);
+            padding: 32px 28px 24px 28px;
+        }
+        h2 {
+            text-align: center;
+            color: #388e3c;
+            margin-bottom: 24px;
+        }
+        label {
+            color: #388e3c;
+            font-weight: 500;
+        }
+        input[type="text"],
+        input[type="email"],
+        input[type="password"],
+        input[type="tel"] {
+            width: 100%;
+            padding: 10px;
+            margin-top: 4px;
+            margin-bottom: 16px;
+            border: 1px solid #b2dfdb;
+            border-radius: 6px;
+            background: #f1f8e9;
+            font-size: 1em;
+            transition: border 0.2s;
+        }
+        input:focus {
+            border: 1.5px solid #388e3c;
+            outline: none;
+        }
+        button[type="submit"] {
+            width: 100%;
+            background: linear-gradient(90deg, #43a047 60%, #66bb6a 100%);
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            padding: 12px;
+            font-size: 1.1em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.2s;
+            margin-top: 8px;
+        }
+        button[type="submit"]:hover {
+            background: linear-gradient(90deg, #388e3c 60%, #43a047 100%);
+        }
+        .login-link {
+            text-align: center;
+            margin-top: 18px;
+        }
+        .login-link a {
+            color: #388e3c;
+            text-decoration: underline;
+            font-weight: 500;
+        }
+        .error-message {
+            color: #e53935;
+            text-align: center;
+            margin-bottom: 16px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="header-tent">
+        <div class="tent-edge"></div>
+    </div>
+    <div class="container">
+        <h2>Cadastre-se como Dono da Banca</h2>
+
+        <% if (error) { %>
+            <p class="error-message"><%= error %></p>
+        <% } %>
+
+        <form action="/dono/cadastro" method="POST">
+            <label for="nome">Nome:</label>
+            <input type="text" id="nome" name="nome" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="senha">Senha (mínimo 6 caracteres):</label>
+            <input type="password" id="senha" name="senha" minlength="6" required>
+
+            <label for="telefone">Telefone:</label>
+            <input type="tel" id="telefone" name="telefone" required>
+
+            <button type="submit">Cadastrar-se</button>
+        </form>
+
+        <div class="login-link">
+            Já tem conta? <a href="/dono/login">Faça login aqui</a>
+        </div>
+    </div>
+</body>
+</html>

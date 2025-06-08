@@ -4,14 +4,16 @@ const app = express();
 const db = require('./config/db');
 const path = require('path');
 
+app.use('/assets', express.static(path.join(__dirname, 'assets')));
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
+
+app.use(express.json());
+app.use(express.urlencoded({ extended: true })); 
 
 db.connect()
   .then(() => {
     console.log('Conectado ao banco de dados PostgreSQL');
-
-    app.use(express.json());
 
     const homeRoute = require('./routes/homeRoute');
     app.use('/', homeRoute);
@@ -28,6 +30,12 @@ db.connect()
     const itemCompraRoute = require('./routes/itemCompraRoute');
     app.use('/item', itemCompraRoute);
 
+    const mercadoriaRoute = require('./routes/mercadoriaRoute');
+    app.use('/mercadoria', mercadoriaRoute);
+
+    const FreguesController = require('./controllers/freguesController');
+    app.get('/donoBanca/freguesia', FreguesController.exibirFregueses);
+
     app.use((req, res, next) => {
       res.status(404).send('Página não encontrada');
     });
@@ -42,14 +50,6 @@ db.connect()
       console.log(`Servidor rodando na porta ${PORT}`);
     });
   })
-  
   .catch(err => {
     console.error('Erro ao conectar ao banco de dados:', err);
   });
-
-
-const bodyParser = require('body-parser');
-const cors = require('cors');
-
-app.use(cors());
-app.use(bodyParser.json());

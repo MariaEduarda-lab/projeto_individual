@@ -69,5 +69,15 @@ module.exports = {
                 details: error.message 
             });
         }
+    },
+
+
+    exibirFregueses: async (_, res) => {
+    try {
+        const fregueses = await FreguesService.getAll();
+        res.render('donoBanca/freguesia', { fregueses, error: null });
+    } catch (error) {
+        res.render('donoBanca/freguesia', { fregueses: [], error: 'Erro ao carregar fregueses.' });
     }
+}
 };

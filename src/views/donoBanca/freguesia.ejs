@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Freguesia</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: #eafbe6;
+            color: #234d20;
+            min-height: 100vh;
+        }
+        .header-tent {
+            width: 100%;
+            height: 100px;
+            background: repeating-linear-gradient(
+                90deg,
+                #e53935 0 40px,
+                #fff 40px 80px
+            );
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            position: relative;
+        }
+        .tent-edge {
+            width: 100%;
+            height: 20px;
+            background: repeating-linear-gradient(
+                90deg,
+                #e53935 0 20px,
+                #fff 20px 40px
+            );
+            border-bottom-left-radius: 30px 15px;
+            border-bottom-right-radius: 30px 15px;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+        }
+        .container {
+            max-width: 600px;
+            margin: 40px auto;
+            background: #fff;
+            border-radius: 16px;
+            box-shadow: 0 4px 16px rgba(60, 120, 60, 0.10);
+            padding: 32px 28px 24px 28px;
+        }
+        h2 {
+            text-align: center;
+            color: #388e3c;
+            margin-bottom: 24px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 16px;
+            background: #f1f8e9;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background: #388e3c;
+            color: #fff;
+        }
+        tr:nth-child(even) {
+            background: #eafbe6;
+        }
+        .error-message {
+            color: #e53935;
+            text-align: center;
+            margin-bottom: 16px;
+            font-weight: bold;
+        }
+        @media (max-width: 900px) {
+            .container {
+                max-width: 95vw;
+            }
+        }
+        @media (max-width: 600px) {
+            .container {
+                padding: 16px 4vw 16px 4vw;
+                margin: 20px 0;
+            }
+            table, th, td {
+                font-size: 0.95em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <%- include('../partials/sidebar') %>
+    <div class="header-tent">
+        <div class="tent-edge"></div>
+    </div>
+    <div class="container">
+        <h2>Freguesia</h2>
+        <% if (error) { %>
+            <p class="error-message"><%= error %></p>
+        <% } %>
+        <% if (fregueses && fregueses.length > 0) { %>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>Email</th>
+                        <th>Endereco</th>
+                        <th>Telefone</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% fregueses.forEach(function(fregues) { %>
+                        <tr>
+                            <td><%= fregues.nome %></td>
+                            <td><%= fregues.email %></td>
+                            <td><%= fregues.endereco %></td>
+                            <td><%= fregues.telefone %></td>
+                        </tr>
+                    <% }) %>
+                </tbody>
+            </table>
+        <% } else { %>
+            <p>Nenhum freguês cadastrado.</p>
+        <% } %>
+    </div>
+</body>
+</html>

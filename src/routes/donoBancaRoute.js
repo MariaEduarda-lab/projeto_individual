@@ -2,9 +2,13 @@ const express = require('express');
 const router = express.Router();
 const DonoBancaController = require('../controllers/donoBancaController');
 
-router.get('/', DonoBancaController.index);
-router.get('/:id', DonoBancaController.show);
-router.post('/', DonoBancaController.store);
-router.put('/:id', DonoBancaController.update);
+router.get('/login', DonoBancaController.exibirLogin);
+router.get('/cadastro', DonoBancaController.exibirCadastro);
+router.get('/perfil', DonoBancaController.exibirPerfil); 
+router.get('/perfil/editar', DonoBancaController.editarPerfil);
+
+router.post('/login', DonoBancaController.entrar);
+router.post('/cadastro', DonoBancaController.store);
+router.post('/perfil/editar', DonoBancaController.atualizarPerfil);
 
 module.exports = router;

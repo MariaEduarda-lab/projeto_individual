@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Banca da Lu</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: #eafbe6;
+            color: #234d20;
+            min-height: 100vh;
+        }
+        .header-tent {
+            width: 100%;
+            height: 100px;
+            background: repeating-linear-gradient(
+                90deg,
+                #e53935 0 40px,
+                #fff 40px 80px
+            );
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            position: relative;
+        }
+        .tent-edge {
+            width: 100%;
+            height: 20px;
+            background: repeating-linear-gradient(
+                90deg,
+                #e53935 0 20px,
+                #fff 20px 40px
+            );
+            border-bottom-left-radius: 30px 15px;
+            border-bottom-right-radius: 30px 15px;
+            position: relative;
+            bottom: 0;
+            left: 0;
+        }
+        .scroll-wrapper {
+            display: flex;
+            min-height: 100vh;
+        }
+        .side-text {
+            width: 320px;
+            min-width: 220px;
+            background: linear-gradient(135deg, #eafbe6 60%, #b2dfdb 100%);
+            padding: 48px 24px;
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            display: flex;
+            align-items: flex-start;
+            justify-content: flex-end;
+            flex-direction: column;
+            box-shadow: -2px 0 8px rgba(56, 142, 60, 0.08);
+        }
+        .side-text p {
+            font-size: 1.2em;
+            color: #388e3c;
+            font-weight: 500;
+        }
+        .main-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 60px 0 120px 0;
+        }
+        .container {
+            width: 600px;
+            background: #fff;
+            border-radius: 16px;
+            box-shadow: 0 4px 16px rgba(60, 120, 60, 0.10);
+            padding: 32px 28px 32px 28px;
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        
+        h1 {
+            color: #388e3c;
+            margin-bottom: 32px;
+        }
+        .btn-custom {
+            display: inline-block;
+            width: 140px;
+            background: linear-gradient(90deg, #43a047 60%, #66bb6a 100%);
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            padding: 14px 0;
+            font-size: 1.1em;
+            font-weight: bold;
+            cursor: pointer;
+            margin: 0 10px;
+            text-decoration: none;
+            transition: background 0.2s;
+        }
+        .btn-custom:hover {
+            background: linear-gradient(90deg, #388e3c 60%, #43a047 100%);
+        }
+        @media (max-width: 900px) {
+        .side-text {
+            width: 100%;
+            min-width: unset;
+            height: auto;
+            position: relative;
+            box-shadow: none;
+            align-items: center;
+            justify-content: center;
+            padding: 80px 8vw;
+        }
+
+        .side-text img {
+            max-width: 80%;
+        }
+    }
+
+    </style>
+</head>
+<body>
+    <div class="header-tent">
+        <div class="tent-edge"></div>
+    </div>
+    <div class="scroll-wrapper">
+        <div class="side-text">
+            <img src="/assets/kombinado.jpeg" alt="Imagem Kombinado">
+            <p>
+                Bem-vindo à feira mais charmosa da cidade! <br>
+                Aqui você encontra produtos frescos, atendimento de qualidade e a simpatia da Lu.<br>
+                Role para baixo e conheça mais!
+            </p>
+        </div>
+        <div class="main-content">
+
+            <div class= "container">
+                <h1>Kombinado</h1>
+                <p>O Kombinado não sai caro!</p>
+                <p>Aqui você pode fazer suas compras de legumes, e elas serão direcionadas para Lu, que combinará sua entrega!</p>
+            </div>
+
+
+            <div class="container">
+                <h1>Bem-vindo à Banca da Lu</h1>
+                <a href="/dono/login" class="btn-custom">Dono</a>
+                <a href="/freguesia" class="btn-custom">Freguês</a>
+            </div>
+        
+            <div class="container">
+                <h2>Sobre a Banca</h2>
+                <p>Atendimento familiar e tradição na sua mesa! Legumes fresquinhos diretamente da feira.</p>
+            </div>
+            <div class="container">
+                <h2>Venha nos visitar!</h2>
+                <p>Rua Vida, 123 - Bairro Alegre - Beaga</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

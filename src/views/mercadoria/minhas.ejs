@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Minhas Mercadorias</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: url('assets/banca_feira.jpeg');
+            background-size: cover;
+            background-repeat: repeat;
+            color: #234d20;
+            min-height: 100vh;
+        }
+        .main-wrapper {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 600px;
+            margin: 40px auto;
+            background: #fff;
+            border-radius: 16px;
+            box-shadow: 0 4px 16px rgba(60, 120, 60, 0.10);
+            padding: 32px 28px 24px 28px;
+            /* Removido o margin-right */
+            transition: margin 0.3s;
+        }
+        .header-tent {
+            width: 100%;
+            height: 100px;
+            background: repeating-linear-gradient(
+                90deg,
+                #e53935 0 40px,
+                #fff 40px 80px
+            );
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            position: relative;
+        }
+        .tent-edge {
+            width: 100%;
+            height: 20px;
+            background: repeating-linear-gradient(
+                90deg,
+                #e53935 0 20px,
+                #fff 20px 40px
+            );
+            border-bottom-left-radius: 30px 15px;
+            border-bottom-right-radius: 30px 15px;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+        }
+        h2, h3 {
+            text-align: center;
+            color: #388e3c;
+            margin-bottom: 24px;
+        }
+        label {
+            color: #388e3c;
+            font-weight: 500;
+        }
+        input[type="text"],
+        input[type="number"],
+        input[type="tel"] {
+            width: 100%;
+            padding: 10px;
+            margin-top: 4px;
+            margin-bottom: 16px;
+            border: 1px solid #b2dfdb;
+            border-radius: 6px;
+            background: #f1f8e9;
+            font-size: 1em;
+            transition: border 0.2s;
+        }
+        input:focus {
+            border: 1.5px solid #388e3c;
+            outline: none;
+        }
+        button[type="submit"] {
+            width: 100%;
+            background: linear-gradient(90deg, #43a047 60%, #66bb6a 100%);
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            padding: 12px;
+            font-size: 1.1em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.2s;
+            margin-top: 8px;
+        }
+        button[type="submit"]:hover {
+            background: linear-gradient(90deg, #388e3c 60%, #43a047 100%);
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 16px;
+            background: #f1f8e9;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background: #388e3c;
+            color: #fff;
+        }
+        tr:nth-child(even) {
+            background: #eafbe6;
+        }
+        .error-message {
+            color: #e53935;
+            text-align: center;
+            margin-bottom: 16px;
+            font-weight: bold;
+        }
+        .back-link {
+            text-align: center;
+            margin-top: 18px;
+        }
+        .back-link a {
+            color: #388e3c;
+            text-decoration: underline;
+            font-weight: 500;
+        }
+        /* Responsividade */
+        @media (max-width: 900px) {
+            .container {
+                max-width: 95vw;
+            }
+            aside {
+                display: none !important;
+            }
+        }
+        @media (max-width: 600px) {
+            .container {
+                padding: 16px 4vw 16px 4vw;
+                margin: 20px 0;
+            }
+            table, th, td {
+                font-size: 0.95em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="main-wrapper">
+        <div class="header-tent">
+            <div class="tent-edge"></div>
+        </div>
+        <div class="container">
+            <h2>Minhas Mercadorias</h2>
+
+            <% if (typeof error !== 'undefined' && error) { %>
+                <p class="error-message"><%= error %></p>
+            <% } %>
+
+            <!-- Formulário para criar ou editar -->
+            <form action="/mercadoria/minhas" method="POST">
+                <input type="hidden" name="id" value="<%= form.id || '' %>">
+
+                <label for="nome">Nome:</label>
+                <input type="text" id="nome" name="nome" value="<%= form.nome || '' %>" required>
+
+                <label for="preco_por_kg">Preço por kg:</label>
+                <input type="number" step="0.01" min="0" id="preco_por_kg" name="preco_por_kg" value="<%= form.preco_por_kg || '' %>" required>
+
+                <input type="hidden" name="dono_banca_id" value="1"> <!-- Será dinâmico depois -->
+
+                <button type="submit"><%= botao %></button>
+            </form>
+
+            <h3>Minhas Mercadorias</h3>
+
+            <% if (mercadorias.length === 0) { %>
+                <p>Você ainda não tem mercadorias cadastradas.</p>
+            <% } else { %>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Nome</th>
+                            <th>Preço por kg</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% mercadorias.forEach(function(mercadoria) { %>
+                            <tr>
+                                <td><%= mercadoria.nome %></td>
+                                <td>R$ <%= mercadoria.preco_por_kg.toFixed(2) %></td>
+                                <td>
+                                    <a href="/mercadoria/minhas?editar=<%= mercadoria.id %>">Editar</a> |
+                                    <a href="/mercadoria/minhas?excluir=<%= mercadoria.id %>">Excluir</a>
+                                </td>
+                            </tr>
+                        <% }) %>
+                    </tbody>
+                </table>
+            <% } %>
+
+            <div class="back-link">
+                <a href="/dono/login">&lt; Voltar</a>
+            </div>
+        </div>
+        <%- include('../partials/sidebar') %>
+    </div>
+</body>
+</html>
