@@ -139,18 +139,190 @@ Para acessar o código completo: [clique aqui](../scripts/202505091332_init.sql)
 
 
 ### 3.1.1 BD e Models (Semana 5)
-*Descreva aqui os Models implementados no sistema web*
 
-### 3.2. Arquitetura (Semana 5)
+#### Banco de Dados e Models
 
-*Posicione aqui o diagrama de arquitetura da sua solução de aplicação web. Atualize sempre que necessário.*
+O banco de dados do projeto Kombinado foi modelado para refletir a usabilidade de nossa personagem principal, a Lu. As tabelas principais são: `dono_banca`, `fregues`, `compra`, `item_compra` e `mercadoria`. Cada tabela possui sua chave primária e, quando necessário, chaves estrangeiras para garantir a integridade referencial.
+Atualmente, a interface é totalmente voltada para uma única dona de Banca, então toda aplicação é baseada e feita "sob medida" para ela.
 
-**Instruções para criação do diagrama de arquitetura**  
-- **Model**: A camada que lida com a lógica de negócios e interage com o banco de dados.
-- **View**: A camada responsável pela interface de usuário.
-- **Controller**: A camada que recebe as requisições, processa as ações e atualiza o modelo e a visualização.
-  
-*Adicione as setas e explicações sobre como os dados fluem entre o Model, Controller e View.*
+**Principais tabelas:**
+- **dono_banca**: armazena os dados do dono da banca (nome, email, senha, telefone).
+- **fregues**: representa os clientes, vinculados ao dono da banca.
+- **mercadoria**: produtos disponíveis para venda, cada um associado a um dono de banca, que será responsável pela inserção e atualização de produtos.
+- **compra**: pedidos realizados pelos fregueses, com informações de datas, valores e status (que depende da aprovação do dono).
+- **item_compra**: itens individuais de cada compra, vinculados à compra, mercadoria e freguês.
+
+**Modelo Relacional:**
+
+Abaixo será possível entender os relacionamentos das tabelas, e como funciona a regra de negócio em relação ao relacionamento.
+
+```mermaid
+
+---
+config:
+  theme: neo-dark
+---
+
+    classDiagram
+    class dono_banca {
+        -id: SERIAL
+        -nome: VARCHAR(100)
+        -email: VARCHAR(100)
+        -senha: VARCHAR(100)
+        -telefone: VARCHAR(20)
+        +getId(): SERIAL
+        +getNome(): VARCHAR(100)
+        +getEmail(): VARCHAR(100)
+        +getSenha(): VARCHAR(100)
+        +getTelefone(): VARCHAR(20)
+    }
+
+    class fregues {
+        -id: SERIAL
+        -nome: VARCHAR(100)
+        -email: VARCHAR(100)
+        -senha: VARCHAR(100)
+        -endereco: VARCHAR(500)
+        -telefone: VARCHAR(20)
+        -dono_banca_id: INT
+        +getId(): SERIAL
+        +getNome(): VARCHAR(100)
+        +getEmail(): VARCHAR(100)
+        +getSenha(): VARCHAR(100)
+        +getEndereco(): VARCHAR(500)
+        +getTelefone(): VARCHAR(20)
+        +getDonoBancaId(): INT
+    }
+
+    class mercadoria {
+        -id: SERIAL
+        -nome: VARCHAR(100)
+        -preco_por_kg: NUMERIC(10,2)
+        -dono_banca_id: INT
+        +getId(): SERIAL
+        +getNome(): VARCHAR(100)
+        +getPrecoPorKg(): NUMERIC(10,2)
+        +getDonoBancaId(): INT
+    }
+
+    class compra {
+        -id: SERIAL
+        -data_pedido: DATE
+        -data_entrega: DATE
+        -valor_estimado_total: NUMERIC(10,2)
+        -valor_final_total: NUMERIC(10,2)
+        -status_pedido: BOOLEAN
+        -fregues_id: INT
+        -dono_banca_id: INT
+        +getId(): SERIAL
+        +getDataPedido(): DATE
+        +getDataEntrega(): DATE
+        +getValorEstimadoTotal(): NUMERIC(10,2)
+        +getValorFinalTotal(): NUMERIC(10,2)
+        +isStatusPedido(): BOOLEAN
+        +getFreguesId(): INT
+        +getDonoBancaId(): INT
+    }
+
+    class item_compra {
+        -id: SERIAL
+        -quantidade: NUMERIC
+        -subtotal_estimado: NUMERIC(10,2)
+        -subtotal_final: NUMERIC(10,2)
+        -mercadoria_id: INT
+        -compra_id: INT
+        +getId(): SERIAL
+        +getQuantidade(): NUMERIC
+        +getSubtotalEstimado(): NUMERIC(10,2)
+        +getSubtotalFinal(): NUMERIC(10,2)
+        +getMercadoriaId(): INT
+        +getCompraId(): INT
+    }
+
+    dono_banca --> "1" fregues : "N*"
+    dono_banca --> "1" mercadoria : "N*"
+    dono_banca --> "1" compra : "N*"
+    fregues --> "1" compra : "N*"
+    compra --> "1" item_compra : "N*"
+    mercadoria --> "1" item_compra : "1*"
+
+```
+
+#### Models implementados
+
+A camada de models utiliza o pacote [Joi](https://joi.dev/) para validação dos dados recebidos pela aplicação. Cada entidade possui um model correspondente, garantindo que os dados estejam no formato correto antes de serem persistidos no banco.
+
+**Exemplo de Model**
+
+- **DonoBancaModel**
+    ```js
+    const Joi = require('joi');
+    class DonoBancaModel {
+            static get schema() {
+                    return Joi.object({
+                            nome: Joi.string().max(100).required(),
+                            email: Joi.string().email().max(100).required(),
+                            senha: Joi.string().min(6).max(100).required(),
+                            telefone: Joi.string().max(20).required()
+                    });
+            }
+    }
+    ```
+
+Esses models garantem a integridade dos dados e facilitam a manutenção e evolução do sistema, já que garantem que seja respeitado o que foi definido como regra de inserção de dados, evitando eventuais falhas.
+
+### 3.2. Arquitetura
+
+A arquitetura da aplicação Kombinado segue o padrão MVC expandido, promovendo uma separação clara de responsabilidades entre as camadas do sistema. O fluxo de dados e responsabilidades pode ser representado conforme abaixo:
+
+```
+Usuário (Frontend)
+      ⇅
+   Rotas (Route)
+      ⇅
+ Controller
+      ⇅
+  Service
+      ⇅
+Repository
+      ⇅
+   Model
+      ⇅
+Banco de Dados
+```
+
+**Descrição das camadas:**
+- **Banco de Dados:**  
+  Responsável pelo armazenamento persistente das informações, como donos de banca, fregueses, mercadorias, compras e itens de compra. Utiliza tabelas relacionais com chaves primárias e estrangeiras para garantir integridade e relacionamentos.
+
+- **Model:**  
+  Define a estrutura dos dados e suas validações (utilizando, por exemplo, o pacote Joi). Garante que apenas dados válidos sejam processados e enviados ao banco.
+
+- **Repository:**  
+  Camada responsável por toda a comunicação com o banco de dados. Realiza operações de CRUD (Create, Read, Update, Delete) e isola o acesso aos dados, facilitando manutenção e testes.
+
+- **Service:**  
+  Centraliza a lógica de negócio da aplicação. Orquestra as operações entre controllers e repositórios, aplicando regras e validações específicas do domínio.
+
+- **Controller:**  
+  Recebe as requisições HTTP das rotas, valida os dados de entrada, chama os serviços necessários e prepara a resposta para o usuário (renderizando views ou retornando JSON).
+
+- **Route:**  
+  Define os endpoints da aplicação, associando URLs e métodos HTTP aos controllers correspondentes.
+
+- **Frontend (View):**  
+  Responsável pela interface com o usuário, seja via páginas EJS (renderizadas no backend) ou componentes React (no frontend). Exibe informações, recebe entradas do usuário e envia requisições para o backend.
+
+#### Fluxo de uma requisição típica:
+
+1. O **usuário** interage com a interface (Frontend/View).
+2. Uma requisição HTTP é enviada para uma **rota** específica.
+3. A **rota** direciona a requisição para o **controller** correspondente.
+4. O **controller** processa a requisição, valida os dados e chama o **service**.
+5. O **service** executa a lógica de negócio e, se necessário, utiliza o **repository** para acessar ou modificar dados no **banco de dados** via **model**.
+6. O resultado retorna pelo mesmo caminho, até chegar novamente ao **frontend**, que exibe a resposta ao usuário.
+
+Essa arquitetura modular facilita a manutenção, testes e evolução do sistema, permitindo que cada camada seja desenvolvida e ajustada de forma independente, promovendo clareza e organização no desenvolvimento da aplicação Kombinado.
 
 ### 3.3. Wireframes (Semana 03 - opcional)
 
@@ -221,7 +393,84 @@ Abaixo estão detalhados todos os endpoints disponíveis na API, organizados por
 
 ### 3.7 Interface e Navegação (Semana 07)
 
-*Descreva e ilustre aqui o desenvolvimento do frontend do sistema web, explicando brevemente o que foi entregue em termos de código e sistema. Utilize prints de tela para ilustrar.*
+#### Tela Inicial - Kombinado
+
+<div align="center">
+   <sub>Imagem 1: Tela 1</sub><br>
+   <img src="../assets/tela1.png" width="100%" 
+   alt="Título"><br>
+   <sup>Fonte: Maria Eduarda, 2025 (Autoral)</sup>
+ </div>
+
+Essa é a primeira tela vista ao entrar no site Kombinado, onde é apresentada um pouco da aplicação.
+
+<div align="center">
+   <sub>Imagem 2: Continuação do Scroll</sub><br>
+   <img src="../assets/tela2.png" width="100%" 
+   alt="Título"><br>
+   <sup>Fonte: Maria Eduarda, 2025 (Autoral)</sup>
+ </div>
+
+ Essa imagem é um corte da continuação da tela 1, onde são apresentados mais detalhes sobre a aplicação, com botões para as outras telas, e nesse caso, para a página do dono, que é o que foi desenvolvido atualmente.
+
+<div align="center">
+   <sub>Imagem 3: Login</sub><br>
+   <img src="../assets/tela8.png" width="100%" 
+   alt="Título"><br>
+   <sup>Fonte: Maria Eduarda, 2025 (Autoral)</sup>
+ </div>
+
+ A pessoa é direcinada para o login ao clilcar no botão dono da tela anterior.
+
+ <div align="center">
+   <sub>Imagem 4: Cadastro</sub><br>
+   <img src="../assets/tela7.png" width="100%" 
+   alt="Título"><br>
+   <sup>Fonte: Maria Eduarda, 2025 (Autoral)</sup>
+ </div>
+
+ Caso a pessoa não tenha cadastro e clique em "cadastre-se aqui", ela é direcionada para a tela de cadastro.
+ 
+
+ <div align="center">
+   <sub>Imagem 5: Mercadorias</sub><br>
+   <img src="../assets/tela3.png" width="100%" 
+   alt="Título"><br>
+   <sup>Fonte: Maria Eduarda, 2025 (Autoral)</sup>
+ </div>
+
+ Aqui é apresentada a primeira imagem ao ser feito o login, com a listagem das mercadorias e uma barra lateral com outras páginas.
+
+ <div align="center">
+   <sub>Imagem 6: Meu perfil</sub><br>
+   <img src="../assets/tela4.png" width="100%" 
+   alt="Título"><br>
+   <sup>Fonte: Maria Eduarda, 2025 (Autoral)</sup>
+ </div>
+
+ Aqui, ao clicar em "Perfil" na barra lateral, é possível ver seu perfil e clicar para editar seu perfil.
+
+
+<div align="center">
+   <sub>Imagem 5: Editar Perfil</sub><br>
+   <img src="../assets/tela5.png" width="100%" 
+   alt="Título"><br>
+   <sup>Fonte: Maria Eduarda, 2025 (Autoral)</sup>
+ </div>
+
+ Aqui é possível editar de fato as informações do seu perfil.
+
+ <div align="center">
+   <sub>Imagem 5: Freguesia</sub><br>
+   <img src="../assets/tela6.png" width="100%" 
+   alt="Título"><br>
+   <sup>Fonte: Maria Eduarda, 2025 (Autoral)</sup>
+ </div>
+
+ A última tela desenvolvida é a freguesia, onde são listados os fregueses da do dono da banca, ao clicar na lateral em "Freguesia".
+ 
+
+
 
 ---
 
