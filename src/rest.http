@@ -1,12 +1,20 @@
 ### Buscar todas as compra
-GET http://localhost:3000/compra
+GET http://localhost:3001/dono/cadastro
+
 
 ### Buscar categoria por ID
 GET http://localhost:3000/compra/1
 
 ### Criar nova categoria
-POST http://localhost:3000/compra
+POST http://localhost:3001/dono/cadastro
 Content-Type: application/json
+
+{
+  "nome": "Maria",
+  "email": "mariazinha@gmail.com",
+  "senha": "soufeliz123",
+  "telefone": "77536829766"
+}
 
 ### Atualizar categoria
 PUT http://localhost:3000/compra/1

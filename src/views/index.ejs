@@ -49,12 +49,22 @@
             padding: 48px 24px;
             position: sticky;
             top: 0;
-            height: 100vh;
+            height: fit-content;
             display: flex;
             align-items: flex-start;
             justify-content: flex-end;
             flex-direction: column;
             box-shadow: -2px 0 8px rgba(56, 142, 60, 0.08);
+            z-index: 10;
+        }
+        .side-text img.top-img {
+            width: 300px;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 50%;
+            margin-bottom: 24px;
+            display: block;
+            box-shadow: 0 2px 8px rgba(56, 142, 60, 0.10);
         }
         .side-text p {
             font-size: 1.2em;
@@ -126,7 +136,7 @@
     </div>
     <div class="scroll-wrapper">
         <div class="side-text">
-            <img src="/assets/kombinado.jpeg" alt="Imagem Kombinado">
+            <img src="/assets/kombinado.jpeg" alt="Kombinado" class="top-img">
             <p>
                 Bem-vindo à feira mais charmosa da cidade! <br>
                 Aqui você encontra produtos frescos, atendimento de qualidade e a simpatia da Lu.<br>
@@ -152,10 +162,18 @@
                 <h2>Sobre a Banca</h2>
                 <p>Atendimento familiar e tradição na sua mesa! Legumes fresquinhos diretamente da feira.</p>
             </div>
+
             <div class="container">
                 <h2>Venha nos visitar!</h2>
                 <p>Rua Vida, 123 - Bairro Alegre - Beaga</p>
             </div>
+
+            <div class= "container">
+                <h1>Atualizações</h1>
+                <p>O site está sendo atualizado, e por enquanto só temos o versionamento do dono.</p>
+                <p>Aguarde os próximos passos.</p>
+            </div>
+
         </div>
     </div>
 </body>

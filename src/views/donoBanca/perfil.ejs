@@ -91,7 +91,7 @@
             color: #388e3c;
             font-weight: 500;
         }
-        input[type="text"], input[type="email"], input[type="tel"] {
+        input[type="text"], input[type="email"], input[type="tel"], input[type="password"] {
             width: 100%;
             padding: 10px;
             margin-top: 4px;
@@ -164,6 +164,8 @@
                 <input type="email" id="email" name="email" value="<%= dono.email %>" required>
                 <label for="telefone">Telefone:</label>
                 <input type="tel" id="telefone" name="telefone" value="<%= dono.telefone %>" required>
+                <label for="senha">Nova senha:</label>
+                <input type="password" id="senha" name="senha" value="<%= dono.senha %>" required>
                 <button type="submit">Salvar</button>
             </form>
         <% } %>

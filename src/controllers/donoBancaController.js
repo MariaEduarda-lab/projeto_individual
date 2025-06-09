@@ -60,34 +60,26 @@ module.exports = {
 },
 
 async exibirPerfil(req, res) {
-    try {
-        const donoId = req.session?.donoId || 1;
-        const dono = await DonoBancaService.getById(donoId);
-        res.render('donoBanca/perfil', { dono, edit: false, error: null }); 
-    } catch (err) {
-        res.render('donoBanca/perfil', { dono: null, edit: false, error: 'Erro ao carregar perfil.' });
-    }
+    const donoId = req.session?.donoId || 1; 
+    const dono = await DonoBancaService.getById(donoId);
+    res.render('donoBanca/perfil', { dono, edit: false, error: null });
 },
 
 async editarPerfil(req, res) {
-    try {
-        const donoId = req.session?.donoId || 1;
-        const dono = await DonoBancaService.getById(donoId);
-        res.render('donoBanca/perfil', { dono, edit: true, error: null });
-    } catch (err) {
-        res.render('donoBanca/perfil', { dono: null, edit: true, error: 'Erro ao carregar perfil para edição.' });
-    }
+    const donoId = req.session?.donoId || 1;
+    const dono = await DonoBancaService.getById(donoId);
+    res.render('donoBanca/perfil', { dono, edit: true, error: null });
 },
 
 async atualizarPerfil(req, res) {
     const donoId = req.session?.donoId || 1;
-    const { nome, email, telefone } = req.body;
+    const { nome, email, telefone, senha } = req.body;
     try {
-        await DonoBancaService.update(donoId, { nome, email, telefone });
+        await DonoBancaService.update(donoId, { nome, email, telefone, senha });
         res.redirect('/dono/perfil');
     } catch (error) {
         const dono = await DonoBancaService.getById(donoId);
-        res.render('donoBanca/perfil', { dono, edit: true, error: 'Erro ao atualizar perfil.' });
+        res.render('donoBanca/perfil', { dono, edit: true, error: error.message });
     }
 }
 

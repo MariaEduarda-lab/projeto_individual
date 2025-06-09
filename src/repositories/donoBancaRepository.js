@@ -20,13 +20,16 @@ class DonoBancaRepository {
         return result.rows[0];
     }
 
-    async update(id, donoData) {
-        const { nome, email, telefone } = donoData;
-        const result = await db.query(
-            'UPDATE dono_banca SET nome = $1, email = $2, telefone = $3 WHERE id = $4 RETURNING id, nome, email, telefone',
-            [nome, email, telefone, id]
-        );
-        return result.rows[0];
+    async update(id, { nome, email, telefone, senha }) {
+        let query, values;
+        if (senha) {
+            query = 'UPDATE dono_banca SET nome = $1, email = $2, telefone = $3, senha = $4 WHERE id = $5';
+            values = [nome, email, telefone, senha, id];
+        } else {
+            query = 'UPDATE dono_banca SET nome = $1, email = $2, telefone = $3 WHERE id = $4';
+            values = [nome, email, telefone, id];
+        }
+        await db.query(query, values);
     }
 }
 
