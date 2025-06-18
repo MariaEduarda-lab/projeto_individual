@@ -26,8 +26,20 @@ module.exports = {
     async store(req, res) {
         try {
             const novoDono = await DonoBancaService.create(req.body);
-            res.redirect('/mercadoria/minhas'); // Agora sim!
+
+            // Se for fetch/AJAX, responda com JSON
+            if (req.xhr || req.headers.accept.indexOf('json') > -1) {
+                return res.status(201).json({ message: 'Cadastro realizado com sucesso!' });
+            }
+
+            // Se for formulário tradicional, redirecione
+            res.redirect('/mercadoria/minhas');
         } catch (error) {
+            // Se for fetch/AJAX, responda com JSON de erro
+            if (req.xhr || req.headers.accept.indexOf('json') > -1) {
+                return res.status(400).json({ error: error.message });
+            }
+            // Se for formulário tradicional, renderize a view com erro
             res.render('donoBanca/cadastro', { error: error.message });
         }
     },

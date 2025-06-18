@@ -87,6 +87,10 @@ Aqui encontram-se todas as instruções necessárias para a instalação de todo
     ```
 3. No "terminal", digite este comando para instalar as dependências definidas no arquivo <b>package.json</b> que são necessárias para rodar o projeto.
 ```sh
+npm init -y
+```
+
+```sh
 npm install
 ```
 4. Para inicializar o servidor, digite o seguinte comando:
@@ -119,11 +123,18 @@ Também é possível acessar o projeto diretamente do seu navegador no seguinte 
 
 ## 🗃 Histórico de lançamentos
 
-* 0.5.0 - XX/XX/2024
+* 0.4.0 - 15/06/2024
+    - Entrega final do projeto
+    - Vídeo de apresentação das principais criações
+    - Novas telas
+    - Atualização de código
+    - Próximos passos e aprendizagem
     * 
-* 0.4.0 - XX/XX/2024
-    * 
-* 0.3.0 - XX/XX/2024
+* 0.3.0 - 08/062024
+    - Criação de visualizações
+    - Integração de backend com frontend
+    - Explicações de fluxos do padão mvc
+    - Telas de desenvolvimento e sua documentação
     * 
 * 0.2.0 - 25/05/2024 : Entrega parte 2
     - Criação de padrão mvc
