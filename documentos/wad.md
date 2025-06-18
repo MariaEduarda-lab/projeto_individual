@@ -481,14 +481,50 @@ Essa é a primeira tela vista ao entrar no site Kombinado, onde é apresentada u
 *VIDEO: Insira o link do vídeo demonstrativo nesta seção*
 *Descreva e ilustre aqui o desenvolvimento do sistema web completo, explicando brevemente o que foi entregue em termos de código e sistema. Utilize prints de tela para ilustrar.*
 
+
+
 ### 4.2 Conclusões e Trabalhos Futuros (Semana 8)
 
-*Indique pontos fortes e pontos a melhorar de maneira geral.*
-*Relacione também quaisquer outras ideias que você tenha para melhorias futuras.*
+
+#### O Projeto Kombinado: Digitalizando a Tradição da Barraca da Lu
+
+O **Projeto Kombinado** nasceu de uma necessidade real e muito próxima: otimizar a gestão de pedidos da **Barraca da Lu**, um negócio familiar com uma clientela fiel, onde a simpatia e a qualidade dos legumes frescos sempre foram marcas registradas. A Lu, uma personagem fictícia para o projeto, é, na verdade, uma representação direta da minha mãe e dos desafios que ela enfrenta diariamente com o crescente volume de pedidos que chegam por canais informais, como o WhatsApp. O projeto vai além de uma simples entrega, ele também é o envolvimento com um desejo pessoal e com a ideia da resolução de um problema.
+
+Em sua essência, o Kombinado se propõe a ser a ponte entre a tradição da feira e a eficiência do mundo digital. A ideia é transformar a maneira como os pedidos são feitos e gerenciados, centralizando e simplificando todo o processo.
+
+##### A Experiência do Cliente e da Feirante
+
+Para os **clientes**, o Kombinado oferece uma **interface intuitiva e amigável**. Através dela, os fregueses podem navegar por um **catálogo digital** dos legumes frescos da Barraca da Lu, visualizando preços atualizados, selecionando quantidades e acompanhando o valor total da compra em tempo real. A comodidade de fazer pedidos com antecedência, a qualquer hora e de qualquer lugar, é um diferencial significativo, proporcionando transparência e conveniência com informações sobre o status de cada pedido.
+
+Do ponto de vista da **Dona Lu**, a aplicação é uma **ferramenta poderosa para organização e crescimento**. Um painel de controle dedicado permite que ela gerencie o catálogo de produtos de forma eficiente, adicione novos itens, atualize preços rapidamente e controle o estoque disponível. A visualização centralizada de todos os pedidos facilita o planejamento da separação dos produtos e a organização das entregas ou retiradas, otimizando seu tempo e trabalho.
+
+O nome "Kombinado" é uma homenagem às raízes do negócio. A icônica Kombi, veículo de transporte da barraca e companheira de longos anos da minha mãe, simboliza o movimento e, mais importante, a ideia de entregas e de um "combinado" com a freguesia, fortalecendo a conexão e a identidade da Barraca da Lu no universo digital.
 
 
+#### Desafios e Aprendizados no Desenvolvimento
 
-## <a name="c5"></a>5. Referências
+O desenvolvimento do Projeto Kombinado foi repleto de desafios e, consequentemente, para grandes aprendizados. Atualmente, o projeto conta com uma **interface simples de backend e frontend**, representando as principais funcionalidades tanto para a feirante quanto para o cliente.
+
+##### A Gestão do Escopo: O Maior Desafio
+
+O principal desafio residiu na **gestão do escopo**. A cada nova funcionalidade pensada, surgia a vontade de adicionar mais e mais recursos, transformando o que deveria ser um **Produto Mínimo Viável (MVP)** em algo muito maior e mais complexo do que o inicialmente planejado. Essa "vontade de entregar coisas além" foi uma constante batalha. Acredito que aqui haja uma descrição de um trabalho futuro, mas o que foi entregue permite escalabilidade.
+
+No entanto, essa dificuldade se tornou um aprendizado crucial: a importância de **focar no essencial** para a primeira versão. Isso permitiu que o projeto fosse desenvolvido de forma mais ágil e que os objetivos principais fossem atingidos sem perder o foco. 
+
+##### Mergulho Técnico e Interconexões
+
+Além da gestão de escopo, o desenvolvimento do Kombinado proporcionou um mergulho profundo em diversas áreas técnicas:
+
+* **Backend:** Entender a lógica de negócios por trás da gestão de pedidos, estoque e catálogo.
+* **Frontend:** Traduzir essa lógica em uma interface intuitiva e responsiva, especialmente para dispositivos móveis.
+* **Conexão com Banco de Dados:** Aprender a estruturar, armazenar e manipular os dados de forma eficiente e segura.
+
+Essa experiência me permitiu ter uma visão holística do desenvolvimento de aplicações web, compreendendo como cada camada se interliga para formar um sistema funcional. Foi uma jornada enriquecedora para solidificar conhecimentos em programação e entender o ciclo de vida de um projeto, desde a concepção de uma necessidade real até a implementação de uma solução prática.
+
+O Projeto Kombinado, portanto, é mais do que uma aplicação; é a materialização de um aprendizado contínuo, impulsionado por uma inspiração pessoal e a busca por uma solução inovadora para um negócio familiar tão especial.
+
+
+#### <a name="c5"></a>5. Referências
 
 Amazon Web Services, Inc. O que é modelagem de dados? Amazon Web Services, Inc., s.d. Disponível em: &lt;https://aws.amazon.com/pt/what-is/data-modeling/#:~:text=A%20modelagem%20de%20dados%20traz,sistema%20em%20toda%20a%20organiza%C3%A7%C3%A3o>. Acesso em: 08 de maio de 2025.
 
