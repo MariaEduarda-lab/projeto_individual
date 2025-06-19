@@ -350,32 +350,48 @@ Abaixo estão detalhados todos os endpoints disponíveis na API, organizados por
 #### Endpoints da API
 
 ##### Donos de Banca
-- **GET** `/donos` - Lista todos os donos de banca
-- **GET** `/donos/:id` - Obtém um dono de banca específico pelo ID
-- **POST** `/donos` - Cria um novo dono de banca
-- **PUT** `/donos/:id` - Atualiza um dono de banca existente
-- **DELETE** `/donos/:id` - Remove um dono de banca
+- **GET** `/donobanca/login` - Exibe a página de login do dono de banca
+- **POST** `/donobanca/login` - Realiza o login do dono de banca
+- **GET** `/donobanca/cadastro` - Exibe a página de cadastro do dono de banca
+- **POST** `/donobanca/cadastro` - Cria um novo dono de banca
+- **GET** `/donobanca/perfil` - Exibe o perfil do dono de banca
+- **GET** `/donobanca/perfil/editar` - Exibe o formulário para editar o perfil
+- **POST** `/donobanca/perfil/editar` - Atualiza os dados do perfil do dono de banca
 
 ##### Fregueses
-- **GET** `/fregueses` - Lista todos os fregueses
-- **GET** `/fregueses/:id` - Obtém um freguês específico pelo ID
-- **POST** `/fregueses` - Cria um novo freguês
-- **PUT** `/fregueses/:id` - Atualiza um freguês existente
-- **DELETE** `/fregueses/:id` - Remove um freguês
+- **GET** `/fregues` - Lista todos os fregueses
+- **GET** `/fregues/mercadorias` - Lista mercadorias disponíveis para fregueses
+- **GET** `/fregues/:id` - Obtém um freguês específico pelo ID
+- **POST** `/fregues` - Cria um novo freguês
+- **PUT** `/fregues/:id` - Atualiza um freguês existente
+- **DELETE** `/fregues/:id` - Remove um freguês
 
 ##### Compras
-- **GET** `/compras` - Lista todas as compras
-- **GET** `/compras/:id` - Obtém uma compra específica pelo ID
-- **POST** `/compras` - Cria uma nova compra
-- **PUT** `/compras/:id` - Atualiza uma compra existente
-- **DELETE** `/compras/:id` - Remove uma compra
+- **GET** `/compra` - Lista todas as compras
+- **GET** `/compra/:id` - Obtém uma compra específica pelo ID
+- **POST** `/compra` - Cria uma nova compra
+- **PUT** `/compra/:id` - Atualiza uma compra existente
+- **DELETE** `/compra/:id` - Remove uma compra
 
 ##### Itens de Compra
-- **GET** `/itens-compra` - Lista todos os itens de compra
-- **GET** `/itens-compra/:id` - Obtém um item de compra específico pelo ID
-- **POST** `/itens-compra` - Cria um novo item de compra
-- **PUT** `/itens-compra/:id` - Atualiza um item de compra existente
-- **DELETE** `/itens-compra/:id` - Remove um item de compra
+- **GET** `/itemcompra` - Lista todos os itens de compra
+- **GET** `/itemcompra/:id` - Obtém um item de compra específico pelo ID
+- **POST** `/itemcompra` - Cria um novo item de compra
+- **PUT** `/itemcompra/:id` - Atualiza um item de compra existente
+- **DELETE** `/itemcompra/:id` - Remove um item de compra
+
+##### Mercadorias
+- **GET** `/mercadoria/minhas` - Lista as mercadorias do dono de banca
+- **POST** `/mercadoria/minhas` - Adiciona uma nova mercadoria para o dono de banca
+- **GET** `/mercadoria` - Lista todas as mercadorias
+- **GET** `/mercadoria/:id` - Obtém uma mercadoria específica pelo ID
+- **POST** `/mercadoria` - Cria uma nova mercadoria
+- **PUT** `/mercadoria/:id` - Atualiza uma mercadoria existente
+- **DELETE** `/mercadoria/:id` - Remove uma mercadoria
+- **GET** `/mercadoria/fregues` - Lista mercadorias disponíveis para fregueses
+
+##### Home
+- **GET** `/` - Página inicial da aplicação
 
 #### Exemplos de Requisições
 
@@ -452,7 +468,7 @@ Essa é a primeira tela vista ao entrar no site Kombinado, onde é apresentada u
 
 
 <div align="center">
-   <sub>Imagem 5: Editar Perfil</sub><br>
+   <sub>Imagem 7: Editar Perfil</sub><br>
    <img src="../assets/tela5.png" width="100%" 
    alt="Título"><br>
    <sup>Fonte: Maria Eduarda, 2025 (Autoral)</sup>
@@ -461,7 +477,7 @@ Essa é a primeira tela vista ao entrar no site Kombinado, onde é apresentada u
  Aqui é possível editar de fato as informações do seu perfil.
 
  <div align="center">
-   <sub>Imagem 5: Freguesia</sub><br>
+   <sub>Imagem 8: Freguesia</sub><br>
    <img src="../assets/tela6.png" width="100%" 
    alt="Título"><br>
    <sup>Fonte: Maria Eduarda, 2025 (Autoral)</sup>
@@ -478,13 +494,60 @@ Essa é a primeira tela vista ao entrar no site Kombinado, onde é apresentada u
 
 ### 4.1 Demonstração do Sistema Web (Semana 8)
 
-*VIDEO: Insira o link do vídeo demonstrativo nesta seção*
-*Descreva e ilustre aqui o desenvolvimento do sistema web completo, explicando brevemente o que foi entregue em termos de código e sistema. Utilize prints de tela para ilustrar.*
+#### Demonstração em Vídeo
+
+[Assista à demonstração no YouTube](https://youtu.be/NrJ0BH3t8Uk)
+
+[![Demonstração do Sistema Kombinado](../assets/barraca_lu2.jpeg)](https://youtu.be/NrJ0BH3t8Uk)
+
+> Clique na imagem acima para assistir ao vídeo demonstrativo diretamente no YouTube.
+
+*O vídeo acima apresenta a demonstração do sistema Kombinado em funcionamento.*
+
+O sistema web Kombinado foi desenvolvido com foco nas necessidades reais da Lu, proporcionando uma experiência simples e eficiente para a feirante. A plataforma permite que ela atualize rapidamente seu perfil, gerencie as mercadorias disponíveis e acompanhe sua freguesia de forma centralizada, facilitando o dia a dia na gestão da barraca.
+
+Além disso, a interface voltada para o freguês garante praticidade e transparência: os clientes podem visualizar, a qualquer momento, a lista de mercadorias cadastradas pelo dono da banca, com informações sempre atualizadas sobre disponibilidade e preços. Dessa forma, tanto a feirante quanto seus clientes têm acesso facilitado às principais funcionalidades, tornando o processo de pedidos mais organizado e acessível.
 
 
+
+Nessa etapa final do projeto foi entregue, em relação ao anterior, visualmente apenas mais uma view, sendo ela:
+
+ <div align="center">
+   <sub>Imagem 9: Produtos</sub><br>
+   <img src="../assets/tela9.png" width="100%" 
+   alt="Título"><br>
+   <sup>Fonte: Maria Eduarda, 2025 (Autoral)</sup>
+ </div>
+
+Essa tela representa uma visualização básica para que o usuário saiba a mercadoria existente, o que futuramente será uma seleção de produtos para lsita de compras.
+
+#### Exemplo de Código: Listagem de Mercadorias para o Freguês
+
+A view `mercadorias.ejs` exibe as mercadorias disponíveis para o freguês. O trecho abaixo mostra como o backend envia os dados para essa view utilizando Express e EJS:
+
+```js
+// Rota para exibir mercadorias ao freguês
+app.get('/fregues/mercadorias', async (req, res) => {
+  try {
+    // Busca todas as mercadorias no banco de dados
+    const mercadorias = await mercadoriaRepository.listarTodas();
+    // Renderiza a view mercadorias.ejs, passando os dados encontrados
+    res.render('fregues/mercadorias', { mercadorias });
+  } catch (error) {
+    res.status(500).send('Erro ao buscar mercadorias');
+  }
+});
+```
+
+**Como funciona:**  
+- Quando o freguês acessa `/fregues/mercadorias`, na web, o backend executa a função para buscar todas as mercadorias cadastradas.
+- O resultado é passado para a view EJS como a variável `mercadorias`.
+- No arquivo `mercadorias.ejs`, um loop percorre a lista e exibe cada produto e seu preço em uma tabela.
+- Se não houver mercadorias, a view mostra uma mensagem informando que não há produtos cadastrados.
+
+Esse fluxo garante que a página sempre exiba as mercadorias atualizadas, conforme o que está no banco de dados, e de acordo com as atualizações feitas pelo dono da banca, a nossa querida Lu.
 
 ### 4.2 Conclusões e Trabalhos Futuros (Semana 8)
-
 
 #### O Projeto Kombinado: Digitalizando a Tradição da Barraca da Lu
 
