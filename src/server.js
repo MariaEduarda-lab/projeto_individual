@@ -34,6 +34,8 @@ db.connect()
     const mercadoriaRoute = require('./routes/mercadoriaRoute');
     app.use('/mercadoria', mercadoriaRoute);
 
+    app.get('/fregues/mercadorias', require('./controllers/mercadoriaController').exibirMercadoriasParaFregues);
+
     const FreguesController = require('./controllers/freguesController');
     app.get('/donoBanca/freguesia', FreguesController.exibirFregueses);
 

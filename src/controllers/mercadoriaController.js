@@ -138,5 +138,18 @@ module.exports = {
                 error: error.message
             });
         }
+    },
+
+    async exibirMercadoriasParaFregues(req, res) {
+        try {
+            const mercadorias = await MercadoriaService.getAll();
+            const mercadoriasFormatadas = mercadorias.map(m => ({
+                ...m,
+                preco_por_kg: parseFloat(m.preco_por_kg) || 0
+            }));
+            res.render('fregues/mercadorias', { mercadorias: mercadoriasFormatadas });
+        } catch (error) {
+            res.render('fregues/mercadorias', { mercadorias: [], error: 'Erro ao carregar mercadorias.' });
+        }
     }
 };
